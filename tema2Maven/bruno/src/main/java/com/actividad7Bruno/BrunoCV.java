@@ -1,4 +1,4 @@
-package com.tema2maven;
+package com.actividad7Bruno;
 
 import java.util.List;
 
@@ -70,6 +70,13 @@ public class BrunoCV {
         this.idiomas = idiomas;
     }
 
+    @Override
+    public String toString() {
+        return "BrunoCV [nombre=" + nombre + ", apellido=" + apellido + ", titulo=" + titulo + ", experienciaLaboral="
+                + experienciaLaboral + ", educacion=" + educacion + ", habilidades=" + habilidades + ", idiomas="
+                + idiomas + "]";
+    }
+
     // Clases internas para representar las subestructuras
     public static class ExperienciaLaboral {
         private String puesto;
@@ -99,6 +106,11 @@ public class BrunoCV {
 
         public void setPeriodo(String periodo) {
             this.periodo = periodo;
+        }
+
+        @Override
+        public String toString() {
+            return "ExperienciaLaboral [puesto=" + puesto + ", empresa=" + empresa + ", periodo=" + periodo + "]";
         }
 
     }
@@ -133,6 +145,11 @@ public class BrunoCV {
             this.año = año;
         }
 
+        @Override
+        public String toString() {
+            return "Educacion [titulo=" + titulo + ", institucion=" + institucion + ", año=" + año + "]";
+        }
+
     }
 
     public static class Idioma {
@@ -154,6 +171,11 @@ public class BrunoCV {
 
         public void setNivel(String nivel) {
             this.nivel = nivel;
+        }
+
+        @Override
+        public String toString() {
+            return "Idioma [idioma=" + idioma + ", nivel=" + nivel + "]";
         }
 
     }
