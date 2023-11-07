@@ -1,0 +1,45 @@
+{
+    "nombre": "Bruno",
+    "apellido": "Rodríguez",
+    "titulo": "Junior developer",
+    "experienciaLaboral": [
+      {
+        "puesto": "Puesto",
+        "empresa": "Empresa 1",
+        "periodo": "Enero 2019 - Presente"
+      },
+      {
+        "puesto": "Puesto 2",
+        "empresa": "Empresa 2",
+        "periodo": "Mayo 2017 - Diciembre 2018"
+      }
+    ],
+    "educacion": [
+      {
+        "titulo": "comunicación audiovisual",
+        "institucion": "universidad de Sevilla",
+        "año": "2018"
+      },
+      {
+        "titulo": "DAM",
+        "institucion": "IES Pio Baroja",
+        "año": "2023"
+      }
+    ],
+    "habilidades": [
+      "Java",
+      "Maven",
+      "Json"
+    ],
+    "idiomas": [
+      {
+        "idioma": "Inglés",
+        "nivel": "B1"
+      },
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      }
+    ]
+  }
+  
