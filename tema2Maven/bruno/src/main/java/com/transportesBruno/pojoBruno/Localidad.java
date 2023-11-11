@@ -13,6 +13,14 @@ public class Localidad {
     @XmlElement(name = "codigo")
     private String codLocalidad;
 
+    public Localidad() {
+    }
+
+    public Localidad(String nombreLocalidad, String codLocalidad) {
+        this.nombreLocalidad = nombreLocalidad;
+        this.codLocalidad = codLocalidad;
+    }
+
     // getters y setters
     public String getNombreLocalidad() {
         return nombreLocalidad;
