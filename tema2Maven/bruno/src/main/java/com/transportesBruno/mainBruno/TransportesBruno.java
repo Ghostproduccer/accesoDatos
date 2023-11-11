@@ -6,7 +6,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import com.transportesBruno.pojoBruno.Empleado;
+import com.transportesBruno.pojoBruno.Empleado2;
 import com.transportesBruno.pojoBruno.ListaEmpleados;
 
 public class TransportesBruno {
