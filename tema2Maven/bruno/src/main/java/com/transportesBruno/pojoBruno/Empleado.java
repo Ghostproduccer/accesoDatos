@@ -20,7 +20,22 @@ public class Empleado {
     @XmlElement(name = "telefono")
     private String tlfEmpleado;
     @XmlElement(name = "salary")
-    private String salarioEmpleado;
+    private double salarioEmpleado;
+
+    // constructores
+
+    public Empleado() {
+    }
+
+    public Empleado(Integer id, String dniEmpleado, String nombreEmpleado, String fechaNacEmpleado, String tlfEmpleado,
+            double salarioEmpleado) {
+        this.id = id;
+        this.dniEmpleado = dniEmpleado;
+        this.nombreEmpleado = nombreEmpleado;
+        this.fechaNacEmpleado = fechaNacEmpleado;
+        this.tlfEmpleado = tlfEmpleado;
+        this.salarioEmpleado = salarioEmpleado;
+    }
 
     // getters y setters
     public Integer getId() {
@@ -63,11 +78,11 @@ public class Empleado {
         this.tlfEmpleado = tlfEmpleado;
     }
 
-    public String getSalarioEmpleado() {
+    public double getSalarioEmpleado() {
         return salarioEmpleado;
     }
 
-    public void setSalarioEmpleado(String salarioEmpleado) {
+    public void setSalarioEmpleado(double salarioEmpleado) {
         this.salarioEmpleado = salarioEmpleado;
     }
 

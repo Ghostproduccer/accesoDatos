@@ -57,14 +57,14 @@ public class TransportesBruno {
     public ListaProvincias listarProvincias() {
         try {
             // Objeto JAXBContext
-            JAXBContext context = JAXBContext.newInstance(ListaLocalidades.class);
+            JAXBContext context = JAXBContext.newInstance(ListaProvincias.class);
 
             // Objeto Unmarshaller para leer
             Unmarshaller um = context.createUnmarshaller();
 
             // devolvemos la lista despues de Leer el XML y obtener sus elementos
             return (ListaProvincias) um.unmarshal(
-                    new File("tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\localidad.xml"));
+                    new File("tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\provincia.xml"));
 
         } catch (JAXBException e) {
             e.printStackTrace();
@@ -75,14 +75,14 @@ public class TransportesBruno {
     public ListaRegiones listarRegiones() {
         try {
             // Objeto JAXBContext
-            JAXBContext context = JAXBContext.newInstance(ListaLocalidades.class);
+            JAXBContext context = JAXBContext.newInstance(ListaRegiones.class);
 
             // Objeto Unmarshaller para leer
             Unmarshaller um = context.createUnmarshaller();
 
             // devolvemos la lista despues de Leer el XML y obtener sus elementos
             return (ListaRegiones) um.unmarshal(
-                    new File("tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\localidad.xml"));
+                    new File("tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\region.xml"));
 
         } catch (JAXBException e) {
             e.printStackTrace();
@@ -90,14 +90,14 @@ public class TransportesBruno {
         return null;
     }
 
-    public void insertarNuevoEmpleado(Empleado empleado) {
+    public void insertarNuevoEmpleado(ListaEmpleados listaActualizada) {
         try {
-            JAXBContext context = JAXBContext.newInstance(Empleado.class);
+            JAXBContext context = JAXBContext.newInstance(ListaEmpleados.class);
             // objeto Marshaller para escribir
             Marshaller jaxbMarshaller = context.createMarshaller();
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             // escribimos al xml
-            jaxbMarshaller.marshal(empleado,
+            jaxbMarshaller.marshal(listaActualizada,
                     new File("tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\empleado.xml"));
             System.out.println("Obj Empleado escrito a fichero");
         } catch (JAXBException e) {
