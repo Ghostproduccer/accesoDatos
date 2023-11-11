@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.*;
 
 //anotaciones
 @XmlRootElement(name = "localidad")
-@XmlType(propOrder = { "nombre", "codLocalidad" })
+@XmlType(propOrder = { "nombreLocalidad", "codLocalidad" })
 @XmlAccessorType(XmlAccessType.FIELD)
 
 public class Localidad {

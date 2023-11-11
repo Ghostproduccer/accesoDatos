@@ -6,36 +6,65 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import com.transportesBruno.pojoBruno.Empleado2;
+import com.transportesBruno.pojoBruno.Empleado;
 import com.transportesBruno.pojoBruno.ListaEmpleados;
+import com.transportesBruno.pojoBruno.ListaLocalidades;
+import com.transportesBruno.pojoBruno.ListaProvincias;
+import com.transportesBruno.pojoBruno.ListaRegiones;
+import com.transportesBruno.pojoBruno.Localidad;
+import com.transportesBruno.pojoBruno.Provincia;
+import com.transportesBruno.pojoBruno.Region;
 
 public class TransportesBruno {
 
-    public void listarEmpleados() {
-        
+    private void listarElementos(String nombre, String rutaArchivo, Class<?> clase) {
         try {
-            //Objeto JAXBContext
-            JAXBContext context = JAXBContext.newInstance(ListaEmpleados.class);
+            // Objeto JAXBContext
+            JAXBContext context = JAXBContext.newInstance(clase);
 
-            //Objeto Unmarshmaller para leer
+            // Objeto Unmarshaller para leer
             Unmarshaller um = context.createUnmarshaller();
 
-            //leemos el xml, obtenemos sus elementos y los gregamos a la listaEmpleados
-            ListaEmpleados listaEmpleados = (ListaEmpleados) um.unmarshal(new File("tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\empleado.xml"));
+            // Leemos el XML, obtenemos sus elementos y los agregamos a la lista
+            Object listaElementos = um.unmarshal(new File(rutaArchivo));
 
-            System.out.println(listaEmpleados);
+            System.out.println(nombre + ":");
+            System.out.println(listaElementos);
+            System.out.println();
 
         } catch (JAXBException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
-        
+    }
+
+    public void listarEmpleados() {
+
+        listarElementos("Empleados",
+                "tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\empleado.xml", ListaEmpleados.class);
 
     }
 
     public void listarTodo() {
-        // Implementa la lógica para listar toda la información de todos los XMLs
+
+        System.out.println("Transportes Bruno:");
+        System.out.println();
+
+        listarElementos("Empleados",
+                "tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\empleado.xml",
+                ListaEmpleados.class);
+
+        listarElementos("Localidades",
+                "tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\localidad.xml",
+                ListaLocalidades.class);
+
+        listarElementos("Provincias",
+                "tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\provincia.xml",
+                ListaProvincias.class);
+
+        listarElementos("Regiones",
+                "tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\region.xml",
+                ListaRegiones.class);
+
     }
 
     public void insertarNuevoEmpleado() {
@@ -58,4 +87,3 @@ public class TransportesBruno {
         // Implementa la lógica para mostrar al empleado que más dinero gana
     }
 }
-
