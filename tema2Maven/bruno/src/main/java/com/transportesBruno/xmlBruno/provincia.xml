@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<provincias>
+    <provincia>
+        <nombre>Madrid</nombre>
+        <codProvincia>ES-M</codProvincia>
+    </provincia>
+    <provincia>
+        <nombre>Barcelona</nombre>
+        <codProvincia>ES-B</codProvincia>
+    </provincia>
+    <provincia>
+        <nombre>Sevilla</nombre>
+        <codProvincia>ES-SE</codProvincia>
+    </provincia>
+    <provincia>
+        <nombre>A Coruña</nombre>
+        <codProvincia>ES-C</codProvincia>
+    </provincia>
+</provincias>

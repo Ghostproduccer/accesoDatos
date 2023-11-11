@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localidades>
+    <localidad>
+        <nombre>Alcalá de Henares</nombre>
+        <codLocalidad>ES-ALC1</codLocalidad>
+    </localidad>
+    <localidad>
+        <nombre>Sabadell</nombre>
+        <codLocalidad>ES-SBD1</codLocalidad>
+    </localidad>
+    <localidad>
+        <nombre>Triana</nombre>
+        <codLocalidad>ES-TNA1</codLocalidad>
+    </localidad>
+    <localidad>
+        <nombre>Santiago de Compostela</nombre>
+        <codLocalidad>ES-SC1</codLocalidad>
+    </localidad>
+</localidades>

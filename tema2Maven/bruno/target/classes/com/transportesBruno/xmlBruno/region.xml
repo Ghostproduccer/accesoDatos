@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<regiones>
+    <region>
+        <nombre>Comunidad Autónoma de Madrid</nombre>
+        <codRegion>ES-MD</codRegion>
+    </region>
+    <region>
+        <nombre>Andalucia</nombre>
+        <codRegion>ES-AN</codRegion>
+    </region>
+    <region>
+        <nombre>Cataluña</nombre>
+        <codRegion>ES-CT</codRegion>
+    </region>
+    <region>
+        <nombre>Galicia</nombre>
+        <codRegion>ES-GA</codRegion>
+    </region>
+</regiones>
