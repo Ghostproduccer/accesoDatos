@@ -15,13 +15,19 @@ public class TransportesBrunoTest {
 
             switch (opcion) {
                 case 'a':
-                    gestionTransportes.listarEmpleados();
+                    System.out.println("Empleados: ");
+                    System.out.println(gestionTransportes.listarEmpleados());
                     break;
                 case 'b':
-                    gestionTransportes.listarTodo();
+                    System.out.println("TRANSPORTES BRUNO");
+                    System.out.println();
+                    System.out.println("Empleados:\n"+gestionTransportes.listarEmpleados());
+                    System.out.println("Localidades:\n"+gestionTransportes.listarLocalidades());
+                    System.out.println("Provincias:\n"+gestionTransportes.listarProvincias());
+                    System.out.println("Regiones:\n"+gestionTransportes.listarRegiones());
                     break;
                 case 'c':
-                    gestionTransportes.insertarNuevoEmpleado();
+                    
                     break;
                 case 'd':
                     gestionTransportes.insertarNuevaLocalidad();

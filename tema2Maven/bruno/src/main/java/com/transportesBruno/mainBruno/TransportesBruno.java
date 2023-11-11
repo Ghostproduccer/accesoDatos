@@ -4,6 +4,7 @@ import java.io.File;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import com.transportesBruno.pojoBruno.Empleado;
@@ -17,58 +18,92 @@ import com.transportesBruno.pojoBruno.Region;
 
 public class TransportesBruno {
 
-    private void listarElementos(String nombre, String rutaArchivo, Class<?> clase) {
+    public ListaEmpleados listarEmpleados() {
         try {
             // Objeto JAXBContext
-            JAXBContext context = JAXBContext.newInstance(clase);
+            JAXBContext context = JAXBContext.newInstance(ListaEmpleados.class);
 
             // Objeto Unmarshaller para leer
             Unmarshaller um = context.createUnmarshaller();
 
-            // Leemos el XML, obtenemos sus elementos y los agregamos a la lista
-            Object listaElementos = um.unmarshal(new File(rutaArchivo));
-
-            System.out.println(nombre + ":");
-            System.out.println(listaElementos);
-            System.out.println();
+            // devolvemos la lista despues de Leer el XML y obtener sus elementos
+            return (ListaEmpleados) um.unmarshal(
+                    new File("tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\empleado.xml"));
 
         } catch (JAXBException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
-    public void listarEmpleados() {
+    public ListaLocalidades listarLocalidades() {
+        try {
+            // Objeto JAXBContext
+            JAXBContext context = JAXBContext.newInstance(ListaLocalidades.class);
 
-        listarElementos("Empleados",
-                "tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\empleado.xml", ListaEmpleados.class);
+            // Objeto Unmarshaller para leer
+            Unmarshaller um = context.createUnmarshaller();
 
+            // devolvemos la lista despues de Leer el XML y obtener sus elementos
+            return (ListaLocalidades) um.unmarshal(
+                    new File("tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\localidad.xml"));
+
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public void listarTodo() {
+    public ListaProvincias listarProvincias() {
+        try {
+            // Objeto JAXBContext
+            JAXBContext context = JAXBContext.newInstance(ListaLocalidades.class);
 
-        System.out.println("Transportes Bruno:");
-        System.out.println();
+            // Objeto Unmarshaller para leer
+            Unmarshaller um = context.createUnmarshaller();
 
-        listarElementos("Empleados",
-                "tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\empleado.xml",
-                ListaEmpleados.class);
+            // devolvemos la lista despues de Leer el XML y obtener sus elementos
+            return (ListaProvincias) um.unmarshal(
+                    new File("tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\localidad.xml"));
 
-        listarElementos("Localidades",
-                "tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\localidad.xml",
-                ListaLocalidades.class);
-
-        listarElementos("Provincias",
-                "tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\provincia.xml",
-                ListaProvincias.class);
-
-        listarElementos("Regiones",
-                "tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\region.xml",
-                ListaRegiones.class);
-
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public void insertarNuevoEmpleado() {
-        // Implementa la lógica para insertar un nuevo empleado
+    public ListaRegiones listarRegiones() {
+        try {
+            // Objeto JAXBContext
+            JAXBContext context = JAXBContext.newInstance(ListaLocalidades.class);
+
+            // Objeto Unmarshaller para leer
+            Unmarshaller um = context.createUnmarshaller();
+
+            // devolvemos la lista despues de Leer el XML y obtener sus elementos
+            return (ListaRegiones) um.unmarshal(
+                    new File("tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\localidad.xml"));
+
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void insertarNuevoEmpleado(Empleado empleado) {
+        try {
+            JAXBContext context = JAXBContext.newInstance(Empleado.class);
+            // objeto Marshaller para escribir
+            Marshaller jaxbMarshaller = context.createMarshaller();
+            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            // escribimos al xml
+            jaxbMarshaller.marshal(empleado,
+                    new File("tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\empleado.xml"));
+            System.out.println("Obj Empleado escrito a fichero");
+        } catch (JAXBException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void insertarNuevaLocalidad() {
