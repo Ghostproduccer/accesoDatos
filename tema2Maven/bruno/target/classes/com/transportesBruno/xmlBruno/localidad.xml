@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <localidades>
     <localidad>
         <nombre>Alcalá de Henares</nombre>
@@ -15,5 +15,9 @@
     <localidad>
         <nombre>Santiago de Compostela</nombre>
         <codLocalidad>ES-SC1</codLocalidad>
+    </localidad>
+    <localidad>
+        <nombre>Ayamonte</nombre>
+        <codLocalidad>AY-ES</codLocalidad>
     </localidad>
 </localidades>

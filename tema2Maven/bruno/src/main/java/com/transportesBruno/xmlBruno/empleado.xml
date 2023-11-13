@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <empleados>
-    <empleado id="1">
-        <dni>12345678A</dni>
-        <nombre>Juan Pérez</nombre>
-        <telefono>123-456-789</telefono>
-        <salary>0.0</salary>
-    </empleado>
     <empleado id="2">
         <dni>98765432B</dni>
         <nombre>Maria López</nombre>
-        <telefono>987-654-321</telefono>
-        <salary>0.0</salary>
+        <fechaNacimiento>15-12-1995</fechaNacimiento>
+        <telefono>620847362</telefono>
+        <salary>2000.0</salary>
     </empleado>
     <empleado id="3">
         <dni>11223344C</dni>
         <nombre>Carlos Rodríguez</nombre>
-        <telefono>555-123-789</telefono>
-        <salary>0.0</salary>
+        <fechaNacimiento>12-04-1996</fechaNacimiento>
+        <telefono>621345672</telefono>
+        <salary>2500.0</salary>
     </empleado>
     <empleado id="4">
         <dni>55443322D</dni>
         <nombre>Ana Martínez</nombre>
-        <telefono>789-987-654</telefono>
-        <salary>0.0</salary>
+        <fechaNacimiento>12-09-1990</fechaNacimiento>
+        <telefono>638567737</telefono>
+        <salary>1000.0</salary>
     </empleado>
     <empleado id="5">
         <dni>29645378V</dni>
         <nombre>Pepito Perez</nombre>
-        <fechaNacimiento>12-03-1990</fechaNacimiento>
+        <fechaNacimiento>22-03-1993</fechaNacimiento>
         <telefono>696567473</telefono>
         <salary>2000.0</salary>
     </empleado>

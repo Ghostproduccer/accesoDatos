@@ -106,8 +106,20 @@ public class TransportesBruno {
         }
     }
 
-    public void insertarNuevaLocalidad() {
-        // Implementa la lógica para insertar una nueva localidad
+    public void insertarNuevaLocalidad(ListaLocalidades listaActualizada) {
+        try {
+            JAXBContext context = JAXBContext.newInstance(ListaLocalidades.class);
+            // objeto Marshaller para escribir
+            Marshaller jaxbMarshaller = context.createMarshaller();
+            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            // escribimos al xml
+            jaxbMarshaller.marshal(listaActualizada,
+                    new File("tema2Maven\\bruno\\src\\main\\java\\com\\transportesBruno\\xmlBruno\\Localidad.xml"));
+            System.out.println("Obj Localidad escrito a fichero");
+        } catch (JAXBException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void borrarEmpleado() {

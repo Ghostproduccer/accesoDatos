@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.*;
 public class Region {
     @XmlElement(name = "nombre")
     private String nombreRegion;
-    @XmlElement(name = "codigo")
+    @XmlElement(name = "codRegion")
     private String codRegion;
 
     // getters y setters

@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.*;
 public class Localidad {
     @XmlElement(name = "nombre")
     private String nombreLocalidad;
-    @XmlElement(name = "codigo")
+    @XmlElement(name = "codLocalidad")
     private String codLocalidad;
 
     public Localidad() {
