@@ -7,14 +7,10 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import com.transportesBruno.pojoBruno.Empleado;
 import com.transportesBruno.pojoBruno.ListaEmpleados;
 import com.transportesBruno.pojoBruno.ListaLocalidades;
 import com.transportesBruno.pojoBruno.ListaProvincias;
 import com.transportesBruno.pojoBruno.ListaRegiones;
-import com.transportesBruno.pojoBruno.Localidad;
-import com.transportesBruno.pojoBruno.Provincia;
-import com.transportesBruno.pojoBruno.Region;
 
 public class TransportesBruno {
 
