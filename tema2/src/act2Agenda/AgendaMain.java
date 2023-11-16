@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class AgendaMain {
     public static void main(String[] args) throws IOException {
 
-        Agenda agenda = new Agenda("src\\agenda\\Agenda.txt");
+        AgendaBruno agenda = new AgendaBruno("tema2\\src\\act2Agenda\\Agenda.txt");
         agenda.loadContacts();
         Scanner scanner = new Scanner(System.in);
         int option = 0;
@@ -33,22 +33,23 @@ public class AgendaMain {
                     }
                     System.out.print("Teléfono: ");
                     String phone = scanner.nextLine();
-                    Contacto contact = new Contacto(name, phone);
+                    ContactoBruno contact = new ContactoBruno(name, phone);
                     agenda.getContacts().add(contact);
                     agenda.saveContacts();
+                    System.out.println("Nuevo contacto añadido.");
                     break;
                 case 2:
                     System.out.print("Buscar: ");
                     String search = scanner.nextLine();
-                    for (Contacto c : agenda.getContacts()) {
-                        if (c.getName().contains(search)) {
+                    for (ContactoBruno c : agenda.getContacts()) {
+                        if (c.getName().equalsIgnoreCase(search)) {
                             System.out.println(c.getName() + ": " + c.getPhone());
                         }
                     }
                     break;
                 case 3:
                     Collections.sort(agenda.getContacts());
-                    for (Contacto c : agenda.getContacts()) {
+                    for (ContactoBruno c : agenda.getContacts()) {
                         System.out.println(c.getName() + ": " + c.getPhone());
                     }
                     break;

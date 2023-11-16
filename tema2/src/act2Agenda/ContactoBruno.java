@@ -1,10 +1,10 @@
 package act2Agenda;
 
-public class Contacto implements Comparable<Contacto> {
+public class ContactoBruno implements Comparable<ContactoBruno> {
     private String name;
     private String phone;
 
-    public Contacto(String name, String phone) {
+    public ContactoBruno(String name, String phone) {
         this.name = name;
         this.phone = phone;
     }
@@ -18,7 +18,7 @@ public class Contacto implements Comparable<Contacto> {
     }
 
     @Override
-    public int compareTo(Contacto other) {
+    public int compareTo(ContactoBruno other) {
         return name.compareTo(other.name);
     }
 }

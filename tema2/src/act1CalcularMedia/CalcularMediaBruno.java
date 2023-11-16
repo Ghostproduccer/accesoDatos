@@ -9,7 +9,7 @@ import java.util.List;
 public class CalcularMediaBruno {
     public static void main(String[] args) throws Exception {
 
-        File fileJugadores = new File("src\\calcularMedia\\jugadores.txt");
+        File fileJugadores = new File("tema2\\src\\act1CalcularMedia\\jugadores.txt");
         List<String> jugadores = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(fileJugadores))) {

@@ -12,15 +12,15 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Agenda {
+public class AgendaBruno {
 
     private final int MAX_CONTACTS = 20;
     private String FILE_PATH = "";
-    private ArrayList<Contacto> contacts = new ArrayList<>();
+    private ArrayList<ContactoBruno> contacts = new ArrayList<>();
 
     
 
-    public Agenda(String fILE_PATH) {
+    public AgendaBruno(String fILE_PATH) {
         FILE_PATH = fILE_PATH;
     }
 
@@ -34,7 +34,7 @@ public class Agenda {
                     String[] parts = line.split(",");
                     String name = parts[0];
                     String phone = parts[1];
-                    Contacto contact = new Contacto(name, phone);
+                    ContactoBruno contact = new ContactoBruno(name, phone);
                     this.contacts.add(contact);
                 }
             } catch (IOException e) {
@@ -50,8 +50,8 @@ public class Agenda {
     public void saveContacts() throws IOException {
         try {
             BufferedWriter bw =new BufferedWriter(new FileWriter(new File(FILE_PATH)));
-            for (Contacto c : contacts) {
-                bw.write(c.getName() + "," + c.getPhone());
+            for (ContactoBruno c : contacts) {
+                bw.write(c.getName() + "," + c.getPhone()+"\n");
             }
             bw.close();
         } catch (FileNotFoundException e) {
@@ -60,19 +60,19 @@ public class Agenda {
     }
 
     public boolean contactExists(String name) {
-        for (Contacto c : contacts) {
-            if (c.getName().equals(name)) {
+        for (ContactoBruno c : contacts) {
+            if (c.getName().equalsIgnoreCase(name)) {
                 return true;
             }
         }
         return false;
     }
 
-    public ArrayList<Contacto> getContacts() {
+    public ArrayList<ContactoBruno> getContacts() {
         return contacts;
     }
 
-    public void setContacts(ArrayList<Contacto> contacts) {
+    public void setContacts(ArrayList<ContactoBruno> contacts) {
         this.contacts = contacts;
     }
 
