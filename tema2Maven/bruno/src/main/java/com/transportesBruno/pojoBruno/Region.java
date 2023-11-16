@@ -33,7 +33,7 @@ public class Region {
     // toString
     @Override
     public String toString() {
-        return "Region [nombreRegion=" + nombreRegion + ", codRegion=" + codRegion + "]";
+        return "\nRegion " + nombreRegion + "{ Código=" + codRegion + " }";
     }
 
 }

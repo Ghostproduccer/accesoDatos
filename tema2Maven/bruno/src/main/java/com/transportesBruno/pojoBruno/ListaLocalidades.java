@@ -24,7 +24,7 @@ public class ListaLocalidades {
     // toString
     @Override
     public String toString() {
-        return "ListaLocalidades [listaLocalidades=" + listaLocalidades + "]";
+        return listaLocalidades + "\n";
     }
 
 }

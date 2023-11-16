@@ -24,7 +24,7 @@ public class ListaProvincias {
     // toString
     @Override
     public String toString() {
-        return "ListaProvincias [listaProvincias=" + listaProvincias + "]";
+        return listaProvincias + "\n";
     }
 
 }

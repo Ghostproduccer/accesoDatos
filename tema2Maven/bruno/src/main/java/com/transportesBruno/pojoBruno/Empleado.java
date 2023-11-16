@@ -89,9 +89,8 @@ public class Empleado {
     // toString
     @Override
     public String toString() {
-        return "Empleado [id=" + id + ", dniEmpleado=" + dniEmpleado + ", nombreEmpleado=" + nombreEmpleado
-                + ", fechaNacEmpleado=" + fechaNacEmpleado + ", tlfEmpleado=" + tlfEmpleado + ", salarioEmpleado="
-                + salarioEmpleado + "]";
+        return "\nEmpleado: "+nombreEmpleado+" {\n ID=" + id + "\n DNI=" + dniEmpleado + "\n Fecha de nacimiento=" + fechaNacEmpleado + "\n Teléfono=" + tlfEmpleado + "\n Salario="
+                + salarioEmpleado + "\n}";
     }
 
 }

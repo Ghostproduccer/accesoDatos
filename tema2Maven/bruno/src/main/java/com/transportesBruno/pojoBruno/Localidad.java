@@ -41,7 +41,7 @@ public class Localidad {
     // toString
     @Override
     public String toString() {
-        return "Localidad [nombreLocalidad=" + nombreLocalidad + ", codLocalidad=" + codLocalidad + "]";
+        return "\nLocalidad " + nombreLocalidad + " { Código= " + codLocalidad + " }";
     }
 
 }

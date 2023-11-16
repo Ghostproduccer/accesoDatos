@@ -24,7 +24,7 @@ public class ListaEmpleados {
     // toString
     @Override
     public String toString() {
-        return "ListaEmpleados [empleados=" + empleados + "]";
+        return empleados + "\n";
     }
 
 }
