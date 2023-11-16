@@ -1,4 +1,4 @@
-package act3RegistroTemperaturas;
+package act5RegistroTemperaturas;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class EstacionMeteoBruno {
     public static void main(String[] args) {
 
-        List<RegistroTemperatura> registros = cargarRegistrosDesdeArchivo("src\\act3RegistroTemperaturas\\meteo.txt");
+        List<RegistroTemperatura> registros = cargarRegistrosDesdeArchivo("tema2\\src\\act3RegistroTemperaturas\\meteo.dat");
         Scanner scanner = new Scanner(System.in);
 
         int opcion = 0;
@@ -39,7 +39,7 @@ public class EstacionMeteoBruno {
                     RegistroTemperatura nuevoRegistro = new RegistroTemperatura(ciudad, fecha, tempMaxima, tempMinima);
                     registros.add(nuevoRegistro);
 
-                    guardarRegistrosEnArchivo("src\\act3RegistroTemperaturas\\meteo.txt", registros);
+                    guardarRegistrosEnArchivo("tema2\\src\\act3RegistroTemperaturas\\meteo.dat", registros);
                     break;
 
                 case 2:
@@ -82,6 +82,7 @@ public class EstacionMeteoBruno {
     private static void guardarRegistrosEnArchivo(String archivo, List<RegistroTemperatura> registros) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivo))) {
             oos.writeObject(registros);
+            System.out.println("Registro guardado");
         } catch (IOException e) {
             System.err.println("Error al guardar registros en el archivo.");
         }
@@ -90,7 +91,7 @@ public class EstacionMeteoBruno {
     // Método para mostrar el historial de registros para una ciudad
     private static void mostrarHistorialRegistros(List<RegistroTemperatura> registros, String ciudad) {
         for (RegistroTemperatura registro : registros) {
-            if (registro.getCiudad().equals(ciudad)) {
+            if (registro.getCiudad().equalsIgnoreCase(ciudad)) {
                 System.out.println(registro);
             }
         }

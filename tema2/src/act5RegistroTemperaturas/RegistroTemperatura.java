@@ -1,4 +1,4 @@
-package act3RegistroTemperaturas;
+package act5RegistroTemperaturas;
 
 import java.io.Serializable;
 
@@ -29,6 +29,6 @@ public class RegistroTemperatura implements Serializable {
 
     @Override
     public String toString() {
-        return ciudad + "\t" + fecha + "\t" + tempMaxima + "\t" + tempMinima;
+        return ciudad + "\t" + "Fecha= "+fecha + "\t" + "Máxima= "+tempMaxima + "\t" +"Mínima="+ tempMinima;
     }
 }

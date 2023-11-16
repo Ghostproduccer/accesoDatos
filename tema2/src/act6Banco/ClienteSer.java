@@ -1,9 +1,9 @@
-package act4Banco;
+package act6Banco;
 
 import java.io.Serializable;
 import java.sql.Date;
 
-public class Cliente implements Serializable {
+public class ClienteSer implements Serializable {
     private String dni;
     private String Nombre;
     private Date fechaNacimiento;

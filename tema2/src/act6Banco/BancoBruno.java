@@ -1,4 +1,4 @@
-package act4Banco;
+package act6Banco;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

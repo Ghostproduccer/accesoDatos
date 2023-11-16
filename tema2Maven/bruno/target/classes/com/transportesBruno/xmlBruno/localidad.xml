@@ -20,4 +20,8 @@
         <nombre>Ayamonte</nombre>
         <codLocalidad>AY-ES</codLocalidad>
     </localidad>
+    <localidad>
+        <nombre>Pozuelo</nombre>
+        <codLocalidad>ES-PO</codLocalidad>
+    </localidad>
 </localidades>

@@ -14,18 +14,18 @@
         <telefono>621345672</telefono>
         <salary>2500.0</salary>
     </empleado>
-    <empleado id="4">
-        <dni>55443322D</dni>
-        <nombre>Ana Martínez</nombre>
-        <fechaNacimiento>12-09-1990</fechaNacimiento>
-        <telefono>638567737</telefono>
-        <salary>1000.0</salary>
-    </empleado>
     <empleado id="5">
         <dni>29645378V</dni>
         <nombre>Pepito Perez</nombre>
         <fechaNacimiento>22-03-1993</fechaNacimiento>
         <telefono>696567473</telefono>
         <salary>2000.0</salary>
+    </empleado>
+    <empleado id="6">
+        <dni>29876543X</dni>
+        <nombre>Jesus</nombre>
+        <fechaNacimiento>15-08-19995</fechaNacimiento>
+        <telefono>675574465</telefono>
+        <salary>1800.0</salary>
     </empleado>
 </empleados>

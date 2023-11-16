@@ -42,7 +42,7 @@ public class AgendaMain {
                     System.out.print("Buscar: ");
                     String search = scanner.nextLine();
                     for (ContactoBruno c : agenda.getContacts()) {
-                        if (c.getName().equalsIgnoreCase(search)) {
+                        if (c.getName().contains(search)) {
                             System.out.println(c.getName() + ": " + c.getPhone());
                         }
                     }
