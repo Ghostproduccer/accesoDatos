@@ -24,4 +24,8 @@
         <nombre>Pozuelo</nombre>
         <codLocalidad>ES-PO</codLocalidad>
     </localidad>
+    <localidad>
+        <nombre>Orcasitas</nombre>
+        <codLocalidad>ES-OR</codLocalidad>
+    </localidad>
 </localidades>

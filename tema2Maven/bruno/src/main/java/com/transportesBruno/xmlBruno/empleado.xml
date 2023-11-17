@@ -21,11 +21,11 @@
         <telefono>696567473</telefono>
         <salary>2000.0</salary>
     </empleado>
-    <empleado id="6">
-        <dni>29876543X</dni>
-        <nombre>Jesus</nombre>
-        <fechaNacimiento>15-08-19995</fechaNacimiento>
-        <telefono>675574465</telefono>
-        <salary>1800.0</salary>
+    <empleado id="7">
+        <dni>29777453C</dni>
+        <nombre>John doe</nombre>
+        <fechaNacimiento>11-11-2011</fechaNacimiento>
+        <telefono>666666666</telefono>
+        <salary>2800.0</salary>
     </empleado>
 </empleados>
