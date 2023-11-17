@@ -1,17 +1,16 @@
 package act6Banco;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 public class ClienteSer implements Serializable {
     private String dni;
-    private String Nombre;
-    private Date fechaNacimiento;
+    private String nombre;
+    private String fechaNacimiento;
     private double saldo;
-    
-    public Cliente(String dni, String nombre, Date fechaNacimiento, double saldo) {
+
+    public ClienteSer(String dni, String nombre, String fechaNacimiento, double saldo) {
         this.dni = dni;
-        Nombre = nombre;
+        this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.saldo = saldo;
     }
@@ -25,18 +24,18 @@ public class ClienteSer implements Serializable {
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -50,10 +49,8 @@ public class ClienteSer implements Serializable {
 
     @Override
     public String toString() {
-        return "Cliente [dni=" + dni + ", Nombre=" + Nombre + ", fechaNacimiento=" + fechaNacimiento + ", saldo="
+        return "Cliente [dni=" + dni + ", Nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", saldo="
                 + saldo + "]";
     }
 
-    
-    
 }

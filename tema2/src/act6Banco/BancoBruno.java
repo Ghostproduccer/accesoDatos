@@ -6,52 +6,147 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
-import act3RegistroTemperaturas.RegistroTemperatura;
+import act6Banco.ClienteSer;
 
 public class BancoBruno {
-    
-    private static List<Cliente> listaClientes = new ArrayList<>();
-    
+
+    private static final String file = "tema2\\src\\act6Banco\\clientes.dat";
+    private static List<ClienteSer> listaClientes = cargarRegistrosDesdeArchivo(file);
+    private static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
-        
-        //creamos 20 clientes de ejemplo
-        for(int i = 0; i < 20; i++) {
-            Date fechaNacimiento = new Date(20010101);
-            listaClientes.add(new Cliente("2968773"+i+"T", "Cliente"+i, fechaNacimiento, 1000));
+
+        int opcion = 0;
+        do {
+            System.out.println("\nMenú:");
+            System.out.println("1. Alta de cliente");
+            System.out.println("2. Baja cliente");
+            System.out.println("3. Listar clientes (por saldo de mayor a menor)");
+            System.out.println("4. Saldo medio de clientes");
+            System.out.println("5. Salir");
+
+            System.out.println("Seleccione una opción:");
+            opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    altaCliente();
+                    break;
+                case 2:
+                    bajaCliente();
+                    break;
+                case 3:
+                    listarClientes();
+                    break;
+                case 4:
+                    saldoMedioClientes();
+                    break;
+                case 5:
+                    System.out.println("Saliendo del programa. ¡Hasta luego!");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Inténtelo de nuevo.");
+            }
+        } while (opcion != 5);
+
+    }
+
+    private static void altaCliente() {
+
+        sc.nextLine();
+        System.out.print("Nombre: ");
+        String nombre = sc.nextLine();
+        System.out.print("dni:");
+        String dni = sc.nextLine();
+        System.out.print("fecha de nacimiento");
+        String fechaNac = sc.nextLine();
+        System.out.print("Saldo: ");
+        double saldo = sc.nextDouble();
+        ClienteSer cliente = new ClienteSer(dni, nombre, fechaNac, saldo);
+        listaClientes.add(cliente);
+        guardarRegistrosEnArchivo(listaClientes, file);
+        System.out.println("Cliente añadido correctamente.");
+    }
+
+    private static void bajaCliente() {
+
+        sc.nextLine();
+        System.out.print("Nombre: ");
+        String nombre = sc.nextLine();
+        ClienteSer cliente = buscarClientePorNombre(nombre);
+        if (cliente != null) {
+            listaClientes.remove(cliente);
+            guardarRegistrosEnArchivo(listaClientes, file);
+            System.out.println("Cliente eliminado correctamente.");
+        } else {
+            System.out.println("Cliente no encontrado.");
         }
+    }
 
-        //guardamos los clientes en clientes.txt
-        guardarRegistrosEnArchivo("src\\act4Banco\\clientes.txt", listaClientes);
+    private static void listarClientes() {
 
-        //recuperamos la lista de clientes desde el archivo y los mostramos por pantalla
-        List<Cliente> listaCLientesRecuperados = cargarRegistrosDesdeArchivo("src\\act4Banco\\clientes.txt");
+        Collections.sort(listaClientes, new Comparator<ClienteSer>() {
+            @Override
+            public int compare(ClienteSer c1, ClienteSer c2) {
+                return Double.compare(c2.getSaldo(), c1.getSaldo());
+            }
+        });
 
-        for (Cliente cliente : listaCLientesRecuperados) {
+        System.out.println("\nListado de clientes:");
+        for (ClienteSer cliente : listaClientes) {
             System.out.println(cliente);
         }
     }
 
-    private static void guardarRegistrosEnArchivo(String archivo, List<Cliente> listaClientes) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivo))) {
-            oos.writeObject(listaClientes);
-        } catch (IOException e) {
-            System.err.println("Error al guardar registros en el archivo.");
+    private static void saldoMedioClientes() {
+
+        double saldoTotal = 0;
+        for (ClienteSer cliente : listaClientes) {
+            saldoTotal += cliente.getSaldo();
         }
+        double saldoMedio = saldoTotal / listaClientes.size();
+        System.out.println("El saldo medio de los clientes es: " + saldoMedio);
     }
 
-    private static List<Cliente> cargarRegistrosDesdeArchivo(String archivo) {
-        List<Cliente> clientes = new ArrayList<>();
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivo))) {
-            clientes = (List<Cliente>) ois.readObject();
-        } catch (FileNotFoundException e) {
-            // El archivo aún no existe, se creará cuando se guarden registros
-        } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Error al cargar registros desde el archivo.");
+    private static ClienteSer buscarClientePorNombre(String nombre) {
+
+        for (ClienteSer cliente : listaClientes) {
+            if (cliente.getNombre().equalsIgnoreCase(nombre)) {
+                return cliente;
+            }
         }
-        return clientes;
+        return null;
+    }
+
+    private static List<ClienteSer> cargarRegistrosDesdeArchivo(String archivo) {
+
+        List<ClienteSer> lista = new ArrayList<>();
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivo))) {
+            lista = (List<ClienteSer>) ois.readObject();
+        } catch (FileNotFoundException e) {
+            System.out.println("El archivo no existe. Se creará uno nuevo.");
+        } catch (IOException e) {
+            System.out.println("Error de entrada/salida.");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error al leer el archivo.");
+        }
+        return lista;
+    }
+
+    private static void guardarRegistrosEnArchivo(List<ClienteSer> lista, String archivo) {
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivo))) {
+            oos.writeObject(lista);
+        } catch (FileNotFoundException e) {
+            System.out.println("El archivo no existe.");
+        } catch (IOException e) {
+            System.out.println("Error de entrada/salida.");
+        }
     }
 }

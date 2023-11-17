@@ -118,15 +118,4 @@ public class TransportesBruno {
         }
     }
 
-    public void borrarEmpleado() {
-        // Implementa la lógica para borrar un empleado por DNI
-    }
-
-    public void mostrarEmpleadoMasAntiguo() {
-        // Implementa la lógica para mostrar al empleado más antiguo
-    }
-
-    public void mostrarEmpleadoMayorSalario() {
-        // Implementa la lógica para mostrar al empleado que más dinero gana
-    }
 }
