@@ -198,40 +198,6 @@ public class MenuGestionXML {
         System.out.println("Nuevo proyecto añadido correctamente.");
     }
 
-    private static void generarDocumentoJSON() throws BaseXException, IOException {
-        System.out.println("Generando documento JSON...");
-
-        // Obtener datos de empleados y proyectos en formato JSON
-        JSONArray empleadosArray = obtenerDatosJSON("menuxmlbruno\\src\\main\\resources\\xml\\Empleados.xml",
-                "empleado");
-        JSONArray proyectosArray = obtenerDatosJSON("menuxmlbruno\\src\\main\\resources\\xml\\Proyectos.xml",
-                "proyecto");
-
-        // Crear el objeto JSON principal
-        JSONObject jsonPrincipal = new JSONObject();
-        jsonPrincipal.put("empleados", empleadosArray);
-        jsonPrincipal.put("proyectos", proyectosArray);
-
-        // Escribir el JSON en un archivo
-        try (FileWriter file = new FileWriter("resultado.json")) {
-            file.write(jsonPrincipal.toJSONString());
-        }
-
-        System.out.println("Documento JSON generado correctamente. Se ha guardado en resultado.json.");
-    }
-
-    private static JSONArray obtenerDatosJSON(String archivoXml, String nombreElemento)
-            throws BaseXException, QueryException, IOException {
-        query = String.format("for $item in doc('%s')//%s return $item", archivoXml, nombreElemento);
-        String result = ejecutarQuery(query);
-
-        // Convertir el resultado de la consulta a un JSONArray
-        JSONArray jsonArray = new JSONArray();
-        jsonArray.add(result);
-
-        return jsonArray;
-    }
-
     static String ejecutarQuery(String query) throws BaseXException, QueryException, IOException {
         String result = new XQuery(query).execute(context);
         return result;
