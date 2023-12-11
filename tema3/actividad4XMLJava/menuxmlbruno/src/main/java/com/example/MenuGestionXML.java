@@ -5,6 +5,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -29,6 +32,10 @@ import org.basex.query.value.item.Item;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
+
+import com.example.pojo.Proyectos;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class MenuGestionXML {
 
@@ -66,7 +73,7 @@ public class MenuGestionXML {
                     agregarNuevoProyecto();
                     break;
                 case 5:
-                    // Lógica para generar un documento JSON basado en el documento XML
+                    generarJson();
                     break;
                 case 0:
                     exit = true;
@@ -196,6 +203,30 @@ public class MenuGestionXML {
         }
 
         System.out.println("Nuevo proyecto añadido correctamente.");
+    }
+
+    private static void generarJson() {
+        
+        try {
+            // Ruta del archivo XML
+            File xmlFile = new File("menuxmlbruno\\src\\main\\resources\\xml\\Proyectos.xml");
+
+            // Crear un contexto JAXB y un unmarshaller
+            JAXBContext jaxbContext = JAXBContext.newInstance(Proyectos.class);
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+
+            // Deserializar el XML a objetos Java
+            Proyectos proyectos = (Proyectos) jaxbUnmarshaller.unmarshal(xmlFile);
+
+            // Convertir objetos Java a JSON con Gson
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String json = gson.toJson(proyectos);
+
+            // Imprimir el resultado
+            System.out.println(json);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
     }
 
     static String ejecutarQuery(String query) throws BaseXException, QueryException, IOException {

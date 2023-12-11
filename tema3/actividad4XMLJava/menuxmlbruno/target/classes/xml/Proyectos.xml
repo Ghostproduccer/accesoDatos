@@ -46,4 +46,12 @@
         <fecha_fin>2024-03-31</fecha_fin>
         <cliente>XYZ Corp</cliente>
     </proyecto>
+
+    <proyecto id="7">
+        <nombre>App investigacion</nombre>
+        <descripcion>App cientifica para universidades</descripcion>
+        <fecha_inicio>12-12-2023</fecha_inicio>
+        <fecha_fin>Indefinida</fecha_fin>
+        <cliente>Universidad de Sevilla</cliente>
+    </proyecto>
 </proyectos>
