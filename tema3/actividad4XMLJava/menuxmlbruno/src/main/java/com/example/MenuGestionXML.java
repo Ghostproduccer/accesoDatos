@@ -1,8 +1,20 @@
 package com.example;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 import org.basex.api.client.ClientSession;
 import org.basex.core.BaseXException;
 import org.basex.core.Context;
@@ -14,7 +26,9 @@ import org.basex.query.iter.Iter;
 import org.basex.query.value.Value;
 import org.basex.query.value.item.Item;
 
-
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
 
 public class MenuGestionXML {
 
@@ -22,7 +36,7 @@ public class MenuGestionXML {
     static Scanner scanner = new Scanner(System.in);
     static String query;
 
-    public static void main(String[] args) throws IOException, QueryException {
+    public static void main(String[] args) throws IOException, QueryException, TransformerException {
 
         boolean exit = false;
 
@@ -101,7 +115,7 @@ public class MenuGestionXML {
         System.out.println(result);
     }
 
-    private static void agregarNuevoProyecto() throws BaseXException, IOException, QueryException {
+    private static void agregarNuevoProyecto() throws TransformerException {
         scanner.nextLine();
 
         System.out.print("Introduzca el nombre del nuevo proyecto: ");
@@ -120,41 +134,78 @@ public class MenuGestionXML {
         String clienteProyecto = scanner.nextLine();
 
         System.out.print("Introduzca el ID del nuevo proyecto: ");
-        int nuevoIdProyecto = scanner.nextInt();
+        String nuevoIdProyecto = scanner.nextLine();
 
-        // Crear el nuevo elemento proyecto
-        String nuevoProyectoXml = String.format(
-                "<proyecto id=\"%d\"><nombre>%s</nombre><descripcion>%s</descripcion><fecha_inicio>%s</fecha_inicio><fecha_fin>%s</fecha_fin><cliente>%s</cliente></proyecto>",
-                nuevoIdProyecto, nombreProyecto, descripcionProyecto, fechaInicioProyecto, fechaFinProyecto,
-                clienteProyecto);
+        // Cargar el documento XML existente
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder;
+        try {
+            docBuilder = docFactory.newDocumentBuilder();
+            Document doc = docBuilder.parse("menuxmlbruno\\src\\main\\resources\\xml\\Proyectos.xml");
 
-        // Añadir el nuevo proyecto al documento XML
-        agregarProyectoAXml(nuevoProyectoXml);
+        // Obtener el elemento raíz
+        Element rootElement = doc.getDocumentElement();
+
+        // Crear un nuevo elemento proyecto
+        Element nuevoProyecto = doc.createElement("proyecto");
+        nuevoProyecto.setAttribute("id", nuevoIdProyecto);
+
+        // Crear elementos hijos para el nuevo proyecto
+        Element nombre = doc.createElement("nombre");
+        nombre.appendChild(doc.createTextNode(nombreProyecto));
+        nuevoProyecto.appendChild(nombre);
+
+        Element descripcion = doc.createElement("descripcion");
+        descripcion.appendChild(doc.createTextNode(descripcionProyecto));
+        nuevoProyecto.appendChild(descripcion);
+
+        Element fechaInicio = doc.createElement("fecha_inicio");
+        fechaInicio.appendChild(doc.createTextNode(fechaInicioProyecto));
+        nuevoProyecto.appendChild(fechaInicio);
+
+        Element fechaFin = doc.createElement("fecha_fin");
+        fechaFin.appendChild(doc.createTextNode(fechaFinProyecto));
+        nuevoProyecto.appendChild(fechaFin);
+
+        Element cliente = doc.createElement("cliente");
+        cliente.appendChild(doc.createTextNode(clienteProyecto));
+        nuevoProyecto.appendChild(cliente);
+
+        // Agregar el nuevo producto al elemento raíz
+        rootElement.appendChild(nuevoProyecto);
+
+        // Guardar los cambios en el archivo XML
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer;
+
+        transformer = transformerFactory.newTransformer();
+
+        DOMSource source = new DOMSource(doc);
+        StreamResult result = new StreamResult(new File("menuxmlbruno\\src\\main\\resources\\xml\\Proyectos.xml"));
+        transformer.transform(source, result);
+
+        } catch (ParserConfigurationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SAXException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
         System.out.println("Nuevo proyecto añadido correctamente.");
-    }
-
-    private static void agregarProyectoAXml(String nuevoProyectoXml)
-            throws BaseXException, QueryException, IOException {
-
-        // Construir la consulta para insertar el nuevo proyecto
-        String query = String.format(
-                "insert node %s into /proyectos",
-                nuevoProyectoXml);
-
-        // Ejecutar la consulta para agregar el nuevo proyecto al documento XML
-        ejecutarQuery(query);
-
-        System.out.println("Nuevo proyecto agregado al documento XML correctamente.");
-
     }
 
     private static void generarDocumentoJSON() throws BaseXException, IOException {
         System.out.println("Generando documento JSON...");
 
         // Obtener datos de empleados y proyectos en formato JSON
-        JSONArray empleadosArray = obtenerDatosJSON("menuxmlbruno\\src\\main\\resources\\xml\\Empleados.xml", "empleado");
-        JSONArray proyectosArray = obtenerDatosJSON("menuxmlbruno\\src\\main\\resources\\xml\\Proyectos.xml", "proyecto");
+        JSONArray empleadosArray = obtenerDatosJSON("menuxmlbruno\\src\\main\\resources\\xml\\Empleados.xml",
+                "empleado");
+        JSONArray proyectosArray = obtenerDatosJSON("menuxmlbruno\\src\\main\\resources\\xml\\Proyectos.xml",
+                "proyecto");
 
         // Crear el objeto JSON principal
         JSONObject jsonPrincipal = new JSONObject();

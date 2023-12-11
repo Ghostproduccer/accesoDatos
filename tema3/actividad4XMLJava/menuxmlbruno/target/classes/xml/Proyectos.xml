@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<proyectos>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><proyectos>
     <proyecto id="1">
         <nombre>Desarrollo Just Eat</nombre>
         <descripcion>Proyecto de desarrollo de software interno</descripcion>
