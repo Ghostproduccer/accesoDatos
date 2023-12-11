@@ -23,6 +23,6 @@
             <artifactId>basex</artifactId>
             <version>10.7</version>
         </dependency>
-
+        
     </dependencies>
 </project>
