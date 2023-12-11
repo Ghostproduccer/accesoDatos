@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<videojuegos>
+    <juego>
+        <nombre>Minecraft</nombre>
+        <plataforma>Multiplataforma</plataforma>
+        <nivel>avanzado</nivel>
+    </juego>
+    <juego>
+        <nombre>The Legend of Zelda: Breath of the Wild</nombre>
+        <plataforma>Nintendo Switch</plataforma>
+        <nivel>medio</nivel>
+    </juego>
+    <juego>
+        <nombre>Dark Souls III</nombre>
+        <plataforma>PlayStation 4, Xbox One, PC</plataforma>
+        <nivel>avanzado</nivel>
+    </juego>
+    <juego>
+        <nombre>Super Mario Bros.</nombre>
+        <plataforma>Nintendo Entertainment System</plataforma>
+        <nivel>fácil</nivel>
+    </juego>
+    <juego>
+        <nombre>Counter-Strike: Global Offensive</nombre>
+        <plataforma>PC</plataforma>
+        <nivel>avanzado</nivel>
+    </juego>
+    <juego>
+        <nombre>FIFA 22</nombre>
+        <plataforma>PlayStation 5, Xbox Series X/S, PC</plataforma>
+        <nivel>medio</nivel>
+    </juego>
+    <juego>
+        <nombre>Among Us</nombre>
+        <plataforma>Android, iOS, PC</plataforma>
+        <nivel>fácil</nivel>
+    </juego>
+    <juego>
+        <nombre>Assassin's Creed Valhalla</nombre>
+        <plataforma>PlayStation 5, Xbox Series X/S, PC</plataforma>
+        <nivel>avanzado</nivel>
+    </juego>
+</videojuegos>

@@ -1,0 +1,8 @@
+a) La expresión XPath para mostrar las ciudades con menos de 1 millón de habitantes sería:
+
+/acb/equipo/ciudad[@nHabitantes < 1000000]
+
+
+b) La expresión XPath para mostrar los equipos con más de dos ligas sería:
+
+/acb/equipo[ligas > 2]

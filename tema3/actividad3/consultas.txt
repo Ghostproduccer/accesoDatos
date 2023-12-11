@@ -1,0 +1,69 @@
+1.Datos de los departamentos que tienen el atributo tipo:
+
+/universidad/departamento[@tipo]
+
+
+2.Datos de los empleados que tengan el atributo salario:
+
+/universidad/departamento/empleado[@salario]
+
+
+3.Datos de los departamentos con teléfono 990033:
+
+/universidad/departamento[@telefono='990033']
+
+
+4.Nombre del departamento con teléfono 990033:
+
+/universidad/departamento[@telefono='990033']/nombre/text()
+
+
+5.Datos de los departamentos de tipo B:
+
+/universidad/departamento[@tipo='B']
+
+
+6.Datos de los empleados de los departamentos de tipo A:
+
+/universidad/departamento[@tipo='A']/empleado
+
+
+7.Datos de los empleados con salario mayor de 1800:
+
+/universidad/departamento/empleado[@salario > 1800]
+
+
+8.Nombres de los empleados con salario mayor de 2000:
+
+/universidad/departamento/empleado[@salario > 2000]/nombre/text()
+
+
+9.Número de empleados que hay en los departamentos de tipo A:
+
+count(/universidad/departamento[@tipo='A']/empleado)
+
+
+10.Número de empleados de cada departamento:
+
+/universidad/departamento/count(empleado)
+
+
+11.Total del salario de todos los empleados:
+
+sum(/universidad/departamento/empleado/@salario)
+
+
+12.Salario mínimo de los empleados:
+
+min(/universidad/departamento/empleado/@salario)
+
+
+13.Por cada departamento, la concatenación del nombre y la media del salario:
+
+/universidad/departamento/concat(nombre/text(), ' - Media de Salario: ', avg(empleado/@salario))
+
+
+14.Nombre del departamento de tipo A que tenga más de 2 empleados:
+
+/universidad/departamento[@tipo='A' and count(empleado) > 2]/nombre/text()
+

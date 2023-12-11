@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proyectos>
+    <proyecto id="1">
+        <nombre>Desarrollo Just Eat</nombre>
+        <descripcion>Proyecto de desarrollo de software interno</descripcion>
+        <fecha_inicio>2023-06-01</fecha_inicio>
+        <fecha_fin>2023-12-31</fecha_fin>
+        <cliente>Just eat</cliente>
+    </proyecto>
+
+    <proyecto id="2">
+        <nombre>Proyecto mejora App Mcdonalds</nombre>
+        <descripcion>Mejora app de Mcdonalds</descripcion>
+        <fecha_inicio>2023-07-15</fecha_inicio>
+        <fecha_fin>2024-01-15</fecha_fin>
+        <cliente>Mcdonalds</cliente>
+    </proyecto>
+
+    <proyecto id="3">
+        <nombre>Soporte Técnico Mcdonalds</nombre>
+        <descripcion>Soporte técnico App Mcdonalds</descripcion>
+        <fecha_inicio>2023-11-15</fecha_inicio>
+        <fecha_fin>Indefinida</fecha_fin>
+        <cliente>Mcdonalds</cliente>
+    </proyecto>
+
+    <proyecto id="4">
+        <nombre>Actualización web Zara</nombre>
+        <descripcion>Creación de material gráfico para la web de Zara</descripcion>
+        <fecha_inicio>2023-08-10</fecha_inicio>
+        <fecha_fin>2023-12-15</fecha_fin>
+        <cliente>Zara</cliente>
+    </proyecto>
+
+    <proyecto id="5">
+        <nombre>Soporte Técnico Springfield</nombre>
+        <descripcion>Implementación de soporte técnico para Springfield</descripcion>
+        <fecha_inicio>2023-09-01</fecha_inicio>
+        <fecha_fin>2024-02-28</fecha_fin>
+        <cliente>Springfield</cliente>
+    </proyecto>
+
+    <proyecto id="6">
+        <nombre>Proyecto de Desarrollo XYZ Corp</nombre>
+        <descripcion>Desarrollo de una nueva funcionalidad</descripcion>
+        <fecha_inicio>2023-10-01</fecha_inicio>
+        <fecha_fin>2024-03-31</fecha_fin>
+        <cliente>XYZ Corp</cliente>
+    </proyecto>
+</proyectos>

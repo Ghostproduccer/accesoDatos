@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lista_empleados>
+    <empleado id="1">
+        <nombre>José López</nombre>
+        <correo>empleado1@example.com</correo>
+        <departamento>Recursos Humanos</departamento>
+    </empleado>
+
+    <empleado id="2">
+        <nombre>John Doe</nombre>
+        <correo>empleado2@example.com</correo>
+        <departamento>Desarrollo</departamento>
+    </empleado>
+
+    <empleado id="3">
+        <nombre>Alexa</nombre>
+        <correo>empleado3@example.com</correo>
+        <departamento>Desarrollo</departamento>
+    </empleado>
+
+    <empleado id="4">
+        <nombre>Rubén Gómez</nombre>
+        <correo>empleado4@example.com</correo>
+        <departamento>Desarrollo</departamento>
+    </empleado>
+
+    <empleado id="5">
+        <nombre>Isabel Pinto</nombre>
+        <correo>empleado5@example.com</correo>
+        <departamento>Desarrollo</departamento>
+    </empleado>
+
+    <empleado id="6">
+        <nombre>Siri</nombre>
+        <correo>empleado6@example.com</correo>
+        <departamento>Diseño Gráfico</departamento>
+    </empleado>
+
+    <empleado id="7">
+        <nombre>Fernando Alonso</nombre>
+        <correo>empleado7@example.com</correo>
+        <departamento>Atención al Cliente</departamento>
+    </empleado>
+
+    <empleado id="8">
+        <nombre>María Pérez</nombre>
+        <correo>empleado8@example.com</correo>
+        <departamento>Marketing</departamento>
+    </empleado>
+</lista_empleados>
