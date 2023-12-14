@@ -150,46 +150,46 @@ public class MenuGestionXML {
             docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.parse("menuxmlbruno\\src\\main\\resources\\xml\\Proyectos.xml");
 
-        // Obtener el elemento raíz
-        Element rootElement = doc.getDocumentElement();
+            // Obtener el elemento raíz
+            Element rootElement = doc.getDocumentElement();
 
-        // Crear un nuevo elemento proyecto
-        Element nuevoProyecto = doc.createElement("proyecto");
-        nuevoProyecto.setAttribute("id", nuevoIdProyecto);
+            // Crear un nuevo elemento proyecto
+            Element nuevoProyecto = doc.createElement("proyecto");
+            nuevoProyecto.setAttribute("id", nuevoIdProyecto);
 
-        // Crear elementos hijos para el nuevo proyecto
-        Element nombre = doc.createElement("nombre");
-        nombre.appendChild(doc.createTextNode(nombreProyecto));
-        nuevoProyecto.appendChild(nombre);
+            // Crear elementos hijos para el nuevo proyecto
+            Element nombre = doc.createElement("nombre");
+            nombre.appendChild(doc.createTextNode(nombreProyecto));
+            nuevoProyecto.appendChild(nombre);
 
-        Element descripcion = doc.createElement("descripcion");
-        descripcion.appendChild(doc.createTextNode(descripcionProyecto));
-        nuevoProyecto.appendChild(descripcion);
+            Element descripcion = doc.createElement("descripcion");
+            descripcion.appendChild(doc.createTextNode(descripcionProyecto));
+            nuevoProyecto.appendChild(descripcion);
 
-        Element fechaInicio = doc.createElement("fecha_inicio");
-        fechaInicio.appendChild(doc.createTextNode(fechaInicioProyecto));
-        nuevoProyecto.appendChild(fechaInicio);
+            Element fechaInicio = doc.createElement("fecha_inicio");
+            fechaInicio.appendChild(doc.createTextNode(fechaInicioProyecto));
+            nuevoProyecto.appendChild(fechaInicio);
 
-        Element fechaFin = doc.createElement("fecha_fin");
-        fechaFin.appendChild(doc.createTextNode(fechaFinProyecto));
-        nuevoProyecto.appendChild(fechaFin);
+            Element fechaFin = doc.createElement("fecha_fin");
+            fechaFin.appendChild(doc.createTextNode(fechaFinProyecto));
+            nuevoProyecto.appendChild(fechaFin);
 
-        Element cliente = doc.createElement("cliente");
-        cliente.appendChild(doc.createTextNode(clienteProyecto));
-        nuevoProyecto.appendChild(cliente);
+            Element cliente = doc.createElement("cliente");
+            cliente.appendChild(doc.createTextNode(clienteProyecto));
+            nuevoProyecto.appendChild(cliente);
 
-        // Agregar el nuevo producto al elemento raíz
-        rootElement.appendChild(nuevoProyecto);
+            // Agregar el nuevo producto al elemento raíz
+            rootElement.appendChild(nuevoProyecto);
 
-        // Guardar los cambios en el archivo XML
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer;
+            // Guardar los cambios en el archivo XML
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer;
 
-        transformer = transformerFactory.newTransformer();
+            transformer = transformerFactory.newTransformer();
 
-        DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(new File("menuxmlbruno\\src\\main\\resources\\xml\\Proyectos.xml"));
-        transformer.transform(source, result);
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File("menuxmlbruno\\src\\main\\resources\\xml\\Proyectos.xml"));
+            transformer.transform(source, result);
 
         } catch (ParserConfigurationException e) {
             // TODO Auto-generated catch block
@@ -206,7 +206,7 @@ public class MenuGestionXML {
     }
 
     private static void generarJson() {
-        
+
         try {
             // Ruta del archivo XML
             File xmlFile = new File("menuxmlbruno\\src\\main\\resources\\xml\\Proyectos.xml");
