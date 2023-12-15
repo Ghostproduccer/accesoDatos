@@ -11,15 +11,15 @@ public class InsertInstituto {
         Connection con=null;
         Statement sentencia;        
         String url= "jdbc:mysql://localhost:3306/instituto";
-       
+        
 
         try {
             con = DriverManager.getConnection(url, "alumno", "0123456789");
             sentencia = con.createStatement();
             
             /* datos a insertar */
-            String sNombreAlumno="Roben Diaz";
-            String sFecha ="10-08-2000";
+            String sNombreAlumno="Jairo";
+            String sFecha ="10-10-1998";
             double dMedia = 10;
             String sCurso = "DAM2";
             
