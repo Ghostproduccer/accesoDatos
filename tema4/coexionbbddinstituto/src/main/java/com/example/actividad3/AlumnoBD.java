@@ -50,6 +50,9 @@ public class AlumnoBD {
                 listaAlumnos.add(new Alumno(num, nombre, fNac, media, clase));
 
             }
+            if (listaAlumnos.isEmpty()) {
+                System.out.println("La consulta no ha devuelto ningún resultado.");
+            }
 
         } catch (SQLException sqlex) {
             sqlex.printStackTrace();

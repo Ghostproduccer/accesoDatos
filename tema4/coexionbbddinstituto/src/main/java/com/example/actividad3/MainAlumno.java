@@ -10,16 +10,21 @@ public class MainAlumno {
     public static void main(String[] args) {
 
         AlumnoBD bbdd = new AlumnoBD("consultaAluDAM1mnos");
+        
+        while (true) {
 
-        System.out.println("Introduzca el curso:");
-        String curso = sc.nextLine();
+            System.out.println("Introduzca el curso:");
+            String curso = sc.nextLine();
 
-        List resultado = bbdd.consultarAlumnos(curso);
+            // Realizar consulta
+            List resultado = bbdd.consultarAlumnos(curso);
 
-        for (Object object : resultado) {
+            // Imprimir resultado
+            for (Object object : resultado) {
 
-            System.out.println(object.toString());
+                System.out.println(object.toString());
 
+            }
         }
 
     }
