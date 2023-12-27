@@ -1,4 +1,4 @@
-package com.example.actividad3;
+package com.example.consultaxCurso;
 
 public class Alumno {
 

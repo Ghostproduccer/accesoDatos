@@ -1,4 +1,4 @@
-package com.example.actividad1;
+package com.example.insertSelectInstituto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

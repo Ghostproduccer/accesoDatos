@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alumnos>
+    <alumno>
+        <nombre>Rubén Diaz</nombre>
+        <fnac>15-05-1999</fnac>
+        <media>8.5</media>
+        <curso>DAM2</curso>
+    </alumno>
+    <alumno>
+        <nombre>Alejandro Rodriguez</nombre>
+        <fnac>20-03-2000</fnac>
+        <media>7.8</media>
+        <curso>DAM2</curso>
+    </alumno>
+    <alumno>
+        <nombre>Carlos Gomez</nombre>
+        <fnac>10-12-1998</fnac>
+        <media>9.2</media>
+        <curso>DAM2</curso>
+    </alumno>
+    <alumno>
+        <nombre>Laura Martinez</nombre>
+        <fnac>25-08-2001</fnac>
+        <media>6.5</media>
+        <curso>DAM1</curso>
+    </alumno>
+    <alumno>
+        <nombre>Pablo Fernandez</nombre>
+        <fnac>05-06-1996</fnac>
+        <media>8.0</media>
+        <curso>DAM1</curso>
+    </alumno>
+</alumnos>
