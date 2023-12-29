@@ -8,12 +8,11 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import com.example.actividad1.pojo.Alumno;
-import com.example.actividad1.pojo.Alumnos;
+import com.example.pojo.instituto.*;
 
 public class XMLtoAlumnos {
 
-    private static String pathName = "src\\main\\resources\\xml\\alumnos.xml";
+    private static String pathName = "src\\main\\resources\\xml\\instituto\\alumnos.xml";
     private static File xmlFile = new File(pathName);
     private static List<Alumno> listalumnos = new ArrayList<>();
 

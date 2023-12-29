@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jugadores>
+    <jugador>
+        <id_jugador>1</id_jugador>
+        <nombre_jugador>LeBron James</nombre_jugador>
+        <procedencia>USA</procedencia>
+        <altura>2.05</altura>
+        <peso>123</peso>
+        <posicion>Ala-pívot</posicion>
+        <nombre_equipo>Los Angeles Lakers</nombre_equipo>
+    </jugador>
+    <jugador>
+        <id_jugador>2</id_jugador>
+        <nombre_jugador>Dwyane Wade</nombre_jugador>
+        <procedencia>USA</procedencia>
+        <altura>1.98</altura>
+        <peso>99</peso>
+        <posicion>Escolta</posicion>
+        <nombre_equipo>Miami Heat</nombre_equipo>
+    </jugador>
+</jugadores>

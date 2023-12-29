@@ -2,7 +2,7 @@ package com.example.actividad1;
 
 import java.util.List;
 
-import com.example.actividad1.pojo.Alumno;
+import com.example.pojo.instituto.*;;
 
 public class Main {
     public static void main(String[] args) {

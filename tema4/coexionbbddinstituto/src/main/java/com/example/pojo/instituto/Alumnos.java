@@ -1,4 +1,4 @@
-package com.example.actividad1.pojo;
+package com.example.pojo.instituto;
 
 import java.util.List;
 
@@ -13,11 +13,11 @@ public class Alumnos {
 
     // Constructor y getters/setters
 
-    public Alumnos() {
-    }
-
     public Alumnos(List<Alumno> alumnos) {
         this.alumnos = alumnos;
+    }
+
+    public Alumnos() {
     }
 
     public List<Alumno> getAlumnos() {
@@ -28,4 +28,3 @@ public class Alumnos {
         this.alumnos = alumnos;
     }
 }
-

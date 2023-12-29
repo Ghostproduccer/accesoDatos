@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<equipos>
+    <equipo>
+        <nombre_equipo>Los Angeles Lakers</nombre_equipo>
+        <ciudad>Los Angeles</ciudad>
+        <conferencia>Oeste</conferencia>
+        <division>Pacífico</division>
+    </equipo>
+    <equipo>
+        <nombre_equipo>Miami Heat</nombre_equipo>
+        <ciudad>Miami</ciudad>
+        <conferencia>Este</conferencia>
+        <division>Sureste</division>
+    </equipo>
+</equipos>

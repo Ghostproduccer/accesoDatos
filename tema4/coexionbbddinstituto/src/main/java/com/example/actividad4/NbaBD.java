@@ -1,4 +1,4 @@
-package com.example.consultaxCurso;
+package com.example.actividad4;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,49 +8,47 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlumnoBD {
+import com.example.pojo.nba.Equipo;
 
-    private String alumnoBD = "";
+public class NbaBD {
 
-    public AlumnoBD(String alumnoBD) {
-        this.alumnoBD = alumnoBD;
+    private String nbaBD = "bbdd nba";
+
+    public NbaBD() {
+
     }
 
-    public List<Alumno> consultarAlumnos(String curso) {
+    public List<Equipo> consultarEquipos() {
 
-        List listaAlumnos = new ArrayList<Alumno>();
+        List listaEquipos = new ArrayList<Equipo>();
 
         Connection con = null;
         Statement sentencia;
-        String url = "jdbc:mysql://localhost:3306/instituto";
+        String url = "jdbc:mysql://localhost:3306/nba3";
 
         try {
 
             con = DriverManager.getConnection(url, "alumno", "0123456789");
 
             String sql = "SELECT * " +
-                    "FROM alumnos " +
-                    "WHERE curso = '" + curso + "';";
+                    "FROM equipos;";
             sentencia = con.createStatement();
             ResultSet rs = sentencia.executeQuery(sql);
 
             while (rs.next()) {
 
-                // Columna num
-                int num = rs.getInt("num");
-                // Columna nombre
-                String nombre = rs.getString("nombre");
-                // Columna fnac
-                String fNac = rs.getString("fnac");
-                // Columna media
-                double media = rs.getDouble("media");
-                // Columna curso
-                String clase = rs.getString("curso");
+                String nombreEquipo = rs.getString("nombre");
 
-                listaAlumnos.add(new Alumno(num, nombre, fNac, media, clase));
+                String ciudad = rs.getString("ciudad");
+
+                String conferencia = rs.getString("conferencia");
+
+                String division = rs.getString("division");
+
+                listaEquipos.add(new Equipo(nombreEquipo, ciudad, conferencia, division));
 
             }
-            if (listaAlumnos.isEmpty()) {
+            if (listaEquipos.isEmpty()) {
                 System.out.println("La consulta no ha devuelto ningún resultado.");
             }
 
@@ -66,6 +64,7 @@ public class AlumnoBD {
                 }
         }
 
-        return listaAlumnos;
+        return listaEquipos;
     }
+
 }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<alumnos>
+    <alumno>
+        <num>1</num>
+        <nombre>Pepe</nombre>
+        <fnac>2000-01-01</fnac>
+        <media>4.5</media>
+        <curso>DAM2</curso>
+    </alumno>
+    <alumno>
+        <num>2</num>
+        <nombre>Antonio Arroz</nombre>
+        <fnac>2000-01-01</fnac>
+        <media>5.0</media>
+        <curso>DAM2</curso>
+    </alumno>
+    <alumno>
+        <num>3</num>
+        <nombre>Cristina Cristal</nombre>
+        <fnac>2000-02-02</fnac>
+        <media>7.23</media>
+        <curso>DAM2</curso>
+    </alumno>
+    <alumno>
+        <num>12</num>
+        <nombre>Rubén Diaz</nombre>
+        <fnac>15-05-1999</fnac>
+        <media>8.5</media>
+        <curso>DAM2</curso>
+    </alumno>
+    <alumno>
+        <num>13</num>
+        <nombre>Alejandro Rodriguez</nombre>
+        <fnac>20-03-2000</fnac>
+        <media>7.8</media>
+        <curso>DAM2</curso>
+    </alumno>
+    <alumno>
+        <num>14</num>
+        <nombre>Carlos Gomez</nombre>
+        <fnac>10-12-1998</fnac>
+        <media>9.2</media>
+        <curso>DAM2</curso>
+    </alumno>
+</alumnos>

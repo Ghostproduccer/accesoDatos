@@ -1,4 +1,4 @@
-package com.example.actividad1.pojo;
+package com.example.pojo.instituto;
 
 import javax.xml.bind.annotation.*;
 
@@ -76,8 +76,9 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno [num=" + num + ", nombre=" + nombre + ", fnac=" + fnac + ", media=" + media + ", curso=" + curso
-                + "]";
+        return "----------\nnum=" + num + "\n Nombre=" + nombre + "\n Fecha de Nacimiento=" + fnac + "\n Media=" + media
+                + "\n Curso=" + curso
+                + "\n----------\n";
     }
 
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<partidos>
+    <partido>
+        <id_partido>1</id_partido>
+        <equipo_local>Los Angeles Lakers</equipo_local>
+        <equipo_visitante>Miami Heat</equipo_visitante>
+        <puntos_local>110</puntos_local>
+        <puntos_visitante>105</puntos_visitante>
+        <temporada>2023-2024</temporada>
+    </partido>
+</partidos>
