@@ -6,7 +6,7 @@
         <procedencia>USA</procedencia>
         <altura>2.05</altura>
         <peso>123</peso>
-        <posicion>Ala-pívot</posicion>
+        <posicion>A-P</posicion>
         <nombre_equipo>Los Angeles Lakers</nombre_equipo>
     </jugador>
     <jugador>
@@ -15,7 +15,7 @@
         <procedencia>USA</procedencia>
         <altura>1.98</altura>
         <peso>99</peso>
-        <posicion>Escolta</posicion>
+        <posicion>E</posicion>
         <nombre_equipo>Miami Heat</nombre_equipo>
     </jugador>
 </jugadores>

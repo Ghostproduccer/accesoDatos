@@ -12,11 +12,11 @@ import javax.xml.bind.annotation.XmlElement;
 
 import com.example.pojo.nba.*;
 
-public class NbaBD {
+public class NbaBDSelect {
 
     private String nbaBD = "bbdd nba";
 
-    public NbaBD() {
+    public NbaBDSelect() {
 
     }
 

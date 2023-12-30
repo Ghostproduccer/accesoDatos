@@ -18,6 +18,9 @@ public class EstadisticasJugadores {
         this.estadisticas_jugadores = estadisticas_jugadores;
     }
 
+    public EstadisticasJugadores() {
+    }
+
     public List<Estadistica> getEstadisticas_jugadores() {
         return estadisticas_jugadores;
     }

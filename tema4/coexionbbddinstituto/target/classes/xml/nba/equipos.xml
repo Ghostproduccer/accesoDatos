@@ -3,13 +3,13 @@
     <equipo>
         <nombre_equipo>Los Angeles Lakers</nombre_equipo>
         <ciudad>Los Angeles</ciudad>
-        <conferencia>Oeste</conferencia>
+        <conferencia>west</conferencia>
         <division>Pacífico</division>
     </equipo>
     <equipo>
         <nombre_equipo>Miami Heat</nombre_equipo>
         <ciudad>Miami</ciudad>
-        <conferencia>Este</conferencia>
+        <conferencia>east</conferencia>
         <division>Sureste</division>
     </equipo>
 </equipos>

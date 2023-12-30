@@ -16,6 +16,9 @@ public class Equipos {
         this.equipos = equipos;
     }
 
+    public Equipos() {
+    }
+
     public List<Equipo> getEquipos() {
         return equipos;
     }

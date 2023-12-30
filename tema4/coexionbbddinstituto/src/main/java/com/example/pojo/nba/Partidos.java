@@ -18,6 +18,9 @@ public class Partidos {
         this.partidos = partidos;
     }
 
+    public Partidos() {
+    }
+
     public List<Partido> getPartidos() {
         return partidos;
     }

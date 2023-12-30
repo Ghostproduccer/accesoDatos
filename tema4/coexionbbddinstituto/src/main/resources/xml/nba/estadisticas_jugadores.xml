@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <estadisticas_jugadores>
     <estadistica>
-        <temporada>2023-2024</temporada>
-        <jugador>1</jugador>
+        <temporada>2023</temporada>
+        <jugador>7</jugador>
         <puntos_por_partido>33</puntos_por_partido>
         <asistencias_por_partido>20</asistencias_por_partido>
         <tapones_por_partido>8</tapones_por_partido>

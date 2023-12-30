@@ -18,6 +18,9 @@ public class Jugadores {
         this.jugadores = jugadores;
     }
 
+    public Jugadores() {
+    }
+
     public List<Jugador> getJugadores() {
         return jugadores;
     }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.pojo.instituto.*;;
 
-public class Main {
+public class Actividad1Test {
     public static void main(String[] args) {
         AlumnoBD alumnobd = new AlumnoBD("insertarxml");
         List<Alumno> alumnos = XMLtoAlumnos.getAlumnosfromXML();

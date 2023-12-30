@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Actividad4Test {
 
-    private static NbaBD bbdd = new NbaBD();
+    private static NbaBDSelect bbdd = new NbaBDSelect();
     private static Scanner sc = new Scanner(System.in);
     
     public static void main(String[] args) {
