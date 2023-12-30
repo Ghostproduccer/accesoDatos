@@ -19,13 +19,13 @@ public class Actividad4Test {
                     System.out.println(bbdd.consultarEquipos());
                     break;
                 case 2:
-                    //consultarJugadores();
+                    System.out.println(bbdd.consultarJugadores());
                     break;
                 case 3:
-                    //consultarPartidos();
+                    System.out.println(bbdd.consultarPartidos());
                     break;
                 case 4:
-                    //consultarEstadisticas();
+                    System.out.println(bbdd.consultarEstadisticas());
                     break;
                 case 5:
                     System.out.println("Saliendo del programa. ¡Hasta luego!");

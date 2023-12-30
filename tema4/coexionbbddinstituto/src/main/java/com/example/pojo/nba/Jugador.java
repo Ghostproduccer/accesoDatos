@@ -17,10 +17,10 @@ public class Jugador {
     private String procedencia;
 
     @XmlElement(name = "altura")
-    private Double altura;
+    private String altura;
 
     @XmlElement(name = "peso")
-    private Double peso;
+    private int peso;
 
     @XmlElement(name = "posicion")
     private String posicion;
@@ -31,7 +31,7 @@ public class Jugador {
     public Jugador() {
     }
 
-    public Jugador(Integer codigo, String nombre, String procedencia, Double altura, Double peso, String posicion,
+    public Jugador(Integer codigo, String nombre, String procedencia, String altura, int peso, String posicion,
             String nombreEquipo) {
         this.codigo = codigo;
         this.nombre = nombre;
@@ -66,19 +66,19 @@ public class Jugador {
         this.procedencia = procedencia;
     }
 
-    public Double getAltura() {
+    public String getAltura() {
         return altura;
     }
 
-    public void setAltura(Double altura) {
+    public void setAltura(String altura) {
         this.altura = altura;
     }
 
-    public Double getPeso() {
+    public int getPeso() {
         return peso;
     }
 
-    public void setPeso(Double peso) {
+    public void setPeso(int peso) {
         this.peso = peso;
     }
 
