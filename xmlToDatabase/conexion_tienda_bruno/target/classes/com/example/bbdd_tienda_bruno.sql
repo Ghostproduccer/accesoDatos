@@ -7,7 +7,7 @@ CREATE TABLE users (
     id_user INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50),
     apellido VARCHAR(50),
-    correo_electronico VARCHAR(100),
+    email VARCHAR(100),
     direccion VARCHAR(255),
     telefono VARCHAR(15),
     contrasena VARCHAR(255)

@@ -2,7 +2,7 @@
     <user>
         <nombre>John</nombre>
         <apellido>Doe</apellido>
-        <correo_electronico>john.doe@example.com</correo_electronico>
+        <email>john.doe@example.com</email>
         <direccion>123 Main Street</direccion>
         <telefono>555-1234</telefono>
         <contrasena>password123</contrasena>
@@ -10,7 +10,7 @@
     <user>
         <nombre>Jane</nombre>
         <apellido>Smith</apellido>
-        <correo_electronico>jane.smith@example.com</correo_electronico>
+        <email>jane.smith@example.com</email>
         <direccion>456 Oak Avenue</direccion>
         <telefono>555-5678</telefono>
         <contrasena>securepass</contrasena>
