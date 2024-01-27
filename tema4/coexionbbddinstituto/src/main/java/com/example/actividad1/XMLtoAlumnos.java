@@ -12,7 +12,7 @@ import com.example.pojo.instituto.*;
 
 public class XMLtoAlumnos {
 
-    private static String pathName = "src\\main\\resources\\xml\\instituto\\alumnos.xml";
+    private static String pathName = "coexionbbddinstituto\\src\\main\\resources\\xml\\instituto\\alumnos.xml";
     private static File xmlFile = new File(pathName);
     private static List<Alumno> listalumnos = new ArrayList<>();
 

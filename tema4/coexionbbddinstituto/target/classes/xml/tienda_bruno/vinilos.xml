@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vinilos>
+    <vinilo>
+        <id_vinilo>1</id_vinilo>
+        <nombre>Vinilo1</nombre>
+        <artista>Artista1</artista>
+        <genero>Genero1</genero>
+        <ano_lanzamiento>2022</ano_lanzamiento>
+        <precio>19.99</precio>
+        <stock>50</stock>
+    </vinilo>
+    <!-- Agrega más vinilos si es necesario -->
+</vinilos>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+    <user>
+        <id_user>1</id_user>
+        <nombre>Nombre1</nombre>
+        <apellido>Apellido1</apellido>
+        <correo_electronico>correo1@example.com</correo_electronico>
+        <direccion>Direccion1</direccion>
+        <telefono>123456789</telefono>
+        <contrasena>contrasena1</contrasena>
+    </user>
+    <!-- Agrega más usuarios si es necesario -->
+</users>

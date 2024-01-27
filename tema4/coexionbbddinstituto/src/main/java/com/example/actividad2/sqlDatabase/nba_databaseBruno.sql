@@ -1,48 +1,75 @@
--- Crear la base de datos
-CREATE DATABASE IF NOT EXISTS nba_database;
+drop database if exists nba3;
+CREATE DATABASE nba3;
 
--- Usar la base de datos recién creada
-USE nba_database;
+use nba3;
 
--- Crear la tabla para equipos
-CREATE TABLE IF NOT EXISTS equipos (
-    id_equipo INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_equipo VARCHAR(255) NOT NULL,
-    ciudad VARCHAR(255) NOT NULL,
-    conferencia VARCHAR(50),
-    division VARCHAR(50)
-);
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+CREATE TABLE IF NOT EXISTS `equipos` (
+  `Nombre` varchar(20) NOT NULL,
+  `Ciudad` varchar(20) DEFAULT NULL,
+  `Conferencia` varchar(4) DEFAULT NULL,
+  `Division` varchar(9) DEFAULT NULL,
+  PRIMARY KEY (`Nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=LATIN1;
 
--- Crear la tabla para jugadores
-CREATE TABLE IF NOT EXISTS jugadores (
-    id_jugador INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_jugador VARCHAR(255) NOT NULL,
-    posicion VARCHAR(50),
-    fecha_nacimiento DATE,
-    id_equipo INT,
-    FOREIGN KEY (id_equipo) REFERENCES equipos(id_equipo)
-);
+CREATE TABLE IF NOT EXISTS `estadisticas` (
+  `temporada` varchar(5) NOT NULL,
+  `jugador` int(11) NOT NULL,
+  `Puntos_por_partido` float DEFAULT NULL,
+  `Asistencias_por_partido` float DEFAULT NULL,
+  `Tapones_por_partido` float DEFAULT NULL,
+  `Rebotes_por_partido` float DEFAULT NULL,
+  PRIMARY KEY (`temporada`,`jugador`),
+  KEY `jugador` (`jugador`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `jugadores` (
+  `codigo` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre` varchar(30) DEFAULT NULL,
+  `Procedencia` varchar(20) DEFAULT NULL,
+  `Altura` varchar(4) DEFAULT NULL,
+  `Peso` int(11) DEFAULT NULL,
+  `Posicion` varchar(5) DEFAULT NULL,
+  `Nombre_equipo` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`codigo`),
+  KEY `Nombre_equipo` (`Nombre_equipo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Crear la tabla para partidos
-CREATE TABLE IF NOT EXISTS partidos (
-    id_partido INT AUTO_INCREMENT PRIMARY KEY,
-    fecha DATE NOT NULL,
-    equipo_local_id INT,
-    equipo_visitante_id INT,
-    puntos_local INT,
-    puntos_visitante INT,
-    FOREIGN KEY (equipo_local_id) REFERENCES equipos(id_equipo),
-    FOREIGN KEY (equipo_visitante_id) REFERENCES equipos(id_equipo)
-);
 
--- Crear la tabla para estadísticas de jugadores en partidos
-CREATE TABLE IF NOT EXISTS estadisticas_jugadores (
-    id_estadistica INT AUTO_INCREMENT PRIMARY KEY,
-    id_partido INT,
-    id_jugador INT,
-    puntos INT,
-    rebotes INT,
-    asistencias INT,
-    FOREIGN KEY (id_partido) REFERENCES partidos(id_partido),
-    FOREIGN KEY (id_jugador) REFERENCES jugadores(id_jugador)
-);
+CREATE TABLE IF NOT EXISTS `partidos` (
+  `codigo` int(11) NOT NULL,
+  `equipo_local` varchar(20) DEFAULT NULL,
+  `equipo_visitante` varchar(20) DEFAULT NULL,
+  `puntos_local` int(11) DEFAULT NULL,
+  `puntos_visitante` int(11) DEFAULT NULL,
+  `temporada` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`codigo`),
+  KEY `equipo_local` (`equipo_local`),
+  KEY `equipo_visitante` (`equipo_visitante`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- Filtros para la tabla `estadisticas`
+--
+ALTER TABLE `estadisticas`
+  ADD CONSTRAINT `estadisticas_ibfk_1` FOREIGN KEY (`jugador`) REFERENCES `jugadores` (`codigo`);
+
+--
+-- Filtros para la tabla `jugadores`
+--
+ALTER TABLE `jugadores`
+  ADD CONSTRAINT `jugadores_ibfk_1` FOREIGN KEY (`Nombre_equipo`) REFERENCES `equipos` (`Nombre`);
+
+--
+-- Filtros para la tabla `partidos`
+--
+ALTER TABLE `partidos`
+  ADD CONSTRAINT `partidos_ibfk_1` FOREIGN KEY (`equipo_local`) REFERENCES `equipos` (`Nombre`),
+  ADD CONSTRAINT `partidos_ibfk_2` FOREIGN KEY (`equipo_visitante`) REFERENCES `equipos` (`Nombre`);
+  
+  
+  
+/*Borramos usuario si ya existe y lo volvemos a crear*/
+DROP USER if EXISTS 'alumno'@'localhost';
+SELECT user FROM mysql.user;
+CREATE USER 'alumno'@'localhost' IDENTIFIED BY '0123456789';
+/*Le damos permisos*/
+GRANT ALL PRIVILEGES ON nba3.* TO 'alumno'@'localhost';
+SELECT user FROM mysql.user;
