@@ -316,9 +316,9 @@ public class TiendaBrunoBBDD {
     public void volcarVinilosXML() {
         Vinilos vinilos = listarVinilos();
         LocalDate fechaActual = LocalDate.now();
-        String xmlPath = xmLtoList.getXmlPath()+"backup_vinilos_"+fechaActual.toString();
+        String xmlPath = xmLtoList.getXmlPath()+"backup_vinilos_"+fechaActual.toString()+".xml";
 
-        xmLtoList.setVinilosToXML(xmlPath, vinilos.getVinilos());
+        xmLtoList.setVinilosToXML(xmlPath, vinilos);
     }
 
 }

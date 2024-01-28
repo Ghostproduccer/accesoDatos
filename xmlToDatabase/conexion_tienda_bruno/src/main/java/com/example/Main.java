@@ -59,7 +59,7 @@ public class Main {
         System.out.println("Menú:");
         System.out.println("1. Listar tabla");
         System.out.println("2. Historial de pedidos por cliente");
-        System.out.println("3. ");
+        System.out.println("3. Modificar precio vinilo");
         System.out.println("4. Insertar vinilos desde XML");
         System.out.println("5. Backup de vinilos a XML");
         System.out.println("6. Salir");
