@@ -1,19 +1,19 @@
 <vinilos>
     <vinilo>
-        <nombre>Album1</nombre>
-        <artista>Artist1</artista>
-        <genero>Rock</genero>
-        <ano_lanzamiento>2020</ano_lanzamiento>
-        <precio>29.99</precio>
+        <nombre>Los cuatro elementos</nombre>
+        <artista>The Rose Island</artista>
+        <genero>Techno</genero>
+        <ano_lanzamiento>2021</ano_lanzamiento>
+        <precio>12.00</precio>
         <stock>50</stock>
     </vinilo>
     <vinilo>
-        <nombre>Album2</nombre>
-        <artista>Artist2</artista>
-        <genero>Pop</genero>
-        <ano_lanzamiento>2021</ano_lanzamiento>
-        <precio>19.99</precio>
-        <stock>30</stock>
+        <nombre>Fanatical Service</nombre>
+        <artista>Not A Headliner</artista>
+        <genero>Techno</genero>
+        <ano_lanzamiento>2022</ano_lanzamiento>
+        <precio>15.00</precio>
+        <stock>20</stock>
     </vinilo>
     <!-- Agrega más vinilos si es necesario -->
 </vinilos>

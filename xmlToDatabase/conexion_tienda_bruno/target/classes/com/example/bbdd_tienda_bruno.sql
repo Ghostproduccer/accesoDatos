@@ -28,7 +28,7 @@ CREATE TABLE vinilos (
 CREATE TABLE pedidos (
     id_pedido INT AUTO_INCREMENT PRIMARY KEY,
     id_user INT,
-    fecha_pedido DATE,
+    fecha_pedido VARCHAR(50),
     estado VARCHAR(20),
     FOREIGN KEY (id_user) REFERENCES users(id_user)
 );
@@ -59,7 +59,7 @@ VALUES
     ('Dead Ashcid', 'Jacquarius', 'Techno', 2024, 16.25, 40);
 
 -- Inserción de datos para la tabla 'users'
-INSERT INTO users (nombre, apellido, correo_electronico, direccion, telefono, contrasena)
+INSERT INTO users (nombre, apellido, email, direccion, telefono, contrasena)
 VALUES 
     ('Bruno', 'Bruno', 'bruno@example.com', 'calle mayor', '666665748', 'password123'),
     ('Alice', 'Smith', 'alice.smith@example.com', '456 Oak St', '6684635253', 'secretword'),

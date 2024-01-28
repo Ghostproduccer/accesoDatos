@@ -14,7 +14,7 @@ public class Pedido {
     private Integer idUser;
 
     @XmlElement(name = "fecha_pedido")
-    private Date fechaPedido;
+    private String fechaPedido;
 
     @XmlElement(name = "estado")
     private String estado;
@@ -22,7 +22,7 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(Integer idPedido, Integer idUser, Date fechaPedido, String estado) {
+    public Pedido(Integer idPedido, Integer idUser, String fechaPedido, String estado) {
         this.idPedido = idPedido;
         this.idUser = idUser;
         this.fechaPedido = fechaPedido;
@@ -45,11 +45,11 @@ public class Pedido {
         this.idUser = idUser;
     }
 
-    public Date getFechaPedido() {
+    public String getFechaPedido() {
         return fechaPedido;
     }
 
-    public void setFechaPedido(Date fechaPedido) {
+    public void setFechaPedido(String fechaPedido) {
         this.fechaPedido = fechaPedido;
     }
 

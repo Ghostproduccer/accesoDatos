@@ -99,9 +99,9 @@ public class Vinilo {
 
     @Override
     public String toString() {
-        return "Vinilo [idVinilo=" + idVinilo + ", nombre=" + nombre + ", artista=" + artista
-                + ", genero=" + genero + ", anoLanzamiento=" + anoLanzamiento + ", precio=" + precio
-                + ", stock=" + stock + "]";
+        return "----------\nid=" + idVinilo + "\nNombre=" + nombre + "\nArtista=" + artista
+                + "\nGénero=" + genero + "\nAño de lanzamiento=" + anoLanzamiento + "\nPrecio=" + precio
+                + "\nStock=" + stock + "\n----------\n";
     }
 
 }

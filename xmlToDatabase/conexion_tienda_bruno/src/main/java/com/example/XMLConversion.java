@@ -6,12 +6,15 @@ import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import com.example.pojo.*;
 
 
-public class XMLtoList {
+public class XMLConversion {
+
+    private static final String XML_PATH = "conexion_tienda_bruno\\src\\main\\resources\\xml\\";
 
     
     public List<User> getUsersfromXML(String usersPath) {
@@ -52,6 +55,21 @@ public class XMLtoList {
         return listaVinilos;
     }
 
+    public void setVinilosToXML(String xmlPath, List<Vinilo> vinilos) {
+        try {
+            JAXBContext context = JAXBContext.newInstance(Vinilos.class);
+            // objeto Marshaller para escribir
+            Marshaller jaxbMarshaller = context.createMarshaller();
+            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            // escribimos al xml
+            jaxbMarshaller.marshal(vinilos, new File(xmlPath));
+            System.out.println("Vinilos volcados a xml en "+xmlPath);
+        } catch (JAXBException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
     public List<Pedido> getPedidosfromXML(String pedidosPath) {
         File xmlFile = new File(pedidosPath);
         List<Pedido> listaPedidos = new ArrayList<>();
@@ -89,4 +107,9 @@ public class XMLtoList {
 
         return listaDetallesPedidos;
     }
+
+    public static String getXmlPath() {
+        return XML_PATH;
+    }
+    
 }

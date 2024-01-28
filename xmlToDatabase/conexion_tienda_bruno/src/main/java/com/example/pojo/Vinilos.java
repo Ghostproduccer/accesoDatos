@@ -25,5 +25,5 @@ public class Vinilos {
     public void setVinilos(List<Vinilo> vinilos) {
         this.vinilos = vinilos;
     }
-
+    
 }
