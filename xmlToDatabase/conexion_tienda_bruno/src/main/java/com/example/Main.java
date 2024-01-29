@@ -21,75 +21,19 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    sc.nextLine();
-                    System.out
-                            .println("\nIntroduzca el nombre de la tabla (vinilos, pedidos, users, detalles_pedido):");
-                    String tabla = sc.nextLine();
-                    bbdd.consultarTabla(tabla);
+                    consultarTabla();
                     break;
                 case 2:
-                    User cliente = bbdd.listarUsuarios().get(0);
-
-                    List<Vinilo> listaVinilos = new ArrayList<>();
-
-                    bbdd.consultarTabla("vinilos");
-
-                    while (true) {
-                        sc.nextLine();
-                        System.out.println(
-                                "\nIngrese el ID del vinilo para añadirlo al pedido (o 'fin' para finalizar):");
-                        String input = sc.nextLine();
-
-                        if (input.equalsIgnoreCase("fin")) {
-                            break;
-                        }
-
-                        try {
-                            int idVinilo = Integer.parseInt(input);
-                            Vinilo vinilo = bbdd.consultarVinilo(idVinilo);
-
-                            if (vinilo != null) {
-                                listaVinilos.add(vinilo);
-                                System.out.println("Vinilo añadido a la lista.\n");
-                            } else {
-                                System.out.println("No se encontró un vinilo con el ID proporcionado.");
-                            }
-                        } catch (NumberFormatException e) {
-                            System.out.println("Por favor, ingrese un ID válido.");
-                        }
-                    }
-
-                    Vinilos vinilos = new Vinilos(listaVinilos);
-                    System.out
-                            .println("Lista final de vinilos seleccionados para el pedido: \n" + vinilos.getVinilos());
-
-                    bbdd.realizarPedido(vinilos, cliente);
+                    realizarPedido();
                     break;
                 case 3:
-                    System.out.println("Introduzca el id del vinilo");
-                    Integer idVinilo = sc.nextInt();
-                    Vinilo vinilo = bbdd.consultarVinilo(idVinilo);
-                    System.out.println(vinilo);
-                    sc.nextLine();
-                    System.out.println("¿Desea modificar el precio del vinilo? s/n");
-                    String answer = sc.nextLine();
-                    if (answer.equals("s")) {
-                        bbdd.modificarPrecioVinilo(vinilo, sc);
-                    }
+                    modificarPrecioVinilo();
                     break;
                 case 4:
-                    sc.nextLine();
-                    System.out.println("Introduzca el nombre del archivo XML a volcar:");
-                    String fileName = sc.nextLine();
-                    bbdd.insertarVinilosdesdeXML(XML_PATH + fileName);
+                    insertarDesdeXML();
                     break;
                 case 5:
-                    sc.nextLine();
-                    System.out.println("¿Desea hacer un backup de los vinilos? s/n");
-                    String siono = sc.nextLine();
-                    if (siono.equals("s")) {
-                        bbdd.volcarVinilosXML();
-                    }
+                    backupXML();
                     break;
 
                 case 6:
@@ -113,4 +57,79 @@ public class Main {
         System.out.println();
         System.out.print("Seleccione una opción: ");
     }
+
+    private static void consultarTabla() {
+        sc.nextLine();
+        System.out
+                .println("\nIntroduzca el nombre de la tabla (vinilos, pedidos, users, detalles_pedido):");
+        String tabla = sc.nextLine();
+        bbdd.consultarTabla(tabla);
+    }
+
+    private static void realizarPedido() {
+        User cliente = bbdd.listarUsuarios().get(0);
+        List<Vinilo> listaVinilos = new ArrayList<>();
+        bbdd.consultarTabla("vinilos");
+
+        while (true) {
+            sc.nextLine();
+            System.out.println(
+                    "\nIngrese el ID del vinilo para añadirlo al pedido (o 'fin' para finalizar):");
+            String input = sc.nextLine();
+
+            if (input.equalsIgnoreCase("fin")) {
+                break;
+            }
+
+            try {
+                int idVinilo = Integer.parseInt(input);
+                Vinilo vinilo = bbdd.consultarVinilo(idVinilo);
+
+                if (vinilo != null) {
+                    listaVinilos.add(vinilo);
+                    System.out.println("Vinilo añadido a la lista.\n");
+                } else {
+                    System.out.println("No se encontró un vinilo con el ID proporcionado.");
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor, ingrese un ID válido.");
+            }
+        }
+        Vinilos vinilos = new Vinilos(listaVinilos);
+        System.out
+                .println("Lista final de vinilos seleccionados para el pedido: \n" + vinilos.getVinilos());
+                
+        bbdd.realizarPedido(vinilos, cliente);
+    }
+
+    private static void modificarPrecioVinilo() {
+        System.out.println("Introduzca el id del vinilo");
+        Integer idVinilo = sc.nextInt();
+        Vinilo vinilo = bbdd.consultarVinilo(idVinilo);
+        System.out.println(vinilo);
+        sc.nextLine();
+        System.out.println("¿Desea modificar el precio del vinilo? s/n");
+        String answer = sc.nextLine();
+        if (answer.equals("s")) {
+            bbdd.modificarPrecioVinilo(vinilo, sc);
+        }
+    }
+
+    private static void insertarDesdeXML() {
+        sc.nextLine();
+        System.out.println("Introduzca el nombre del archivo XML a volcar:");
+        String fileName = sc.nextLine();
+        bbdd.insertarVinilosdesdeXML(XML_PATH + fileName);
+    }
+
+    private static void backupXML() {
+        sc.nextLine();
+        System.out.println("¿Desea hacer un backup de los vinilos? s/n");
+        String siono = sc.nextLine();
+        if (siono.equals("s")) {
+            bbdd.volcarVinilosXML();
+        }
+    }
+
 }
