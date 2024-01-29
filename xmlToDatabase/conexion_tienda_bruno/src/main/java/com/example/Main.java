@@ -70,9 +70,9 @@ public class Main {
         User cliente = bbdd.listarUsuarios().get(0);
         List<Vinilo> listaVinilos = new ArrayList<>();
         bbdd.consultarTabla("vinilos");
+        sc.nextLine();
 
         while (true) {
-            sc.nextLine();
             System.out.println(
                     "\nIngrese el ID del vinilo para añadirlo al pedido (o 'fin' para finalizar):");
             String input = sc.nextLine();
@@ -98,8 +98,8 @@ public class Main {
         }
         Vinilos vinilos = new Vinilos(listaVinilos);
         System.out
-                .println("Lista final de vinilos seleccionados para el pedido: \n" + vinilos.getVinilos());
-                
+                .println("Lista final de vinilos seleccionados para el pedido: \n" + vinilos.getVinilos()+"\n");
+
         bbdd.realizarPedido(vinilos, cliente);
     }
 

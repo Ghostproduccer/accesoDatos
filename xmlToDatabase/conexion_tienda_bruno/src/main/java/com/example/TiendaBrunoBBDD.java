@@ -81,7 +81,7 @@ public class TiendaBrunoBBDD {
                     String sqlUpdate = "UPDATE vinilos SET stock = " + nuevoStock + " WHERE id_vinilo = " + vinilo.getIdVinilo() + ";";
                     try (Statement sentencia = con.createStatement()) {
                         sentencia.executeUpdate(sqlUpdate);
-                        System.out.println("\nStock del vinilo " + vinilo.getIdVinilo() + " Actualizado a " + nuevoStock);
+                        System.out.println("Stock del vinilo " + vinilo.getIdVinilo() + " Actualizado a " + nuevoStock);
     
                     }
                 } else {
