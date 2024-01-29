@@ -3,12 +3,15 @@ package com.example;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -51,63 +54,93 @@ public class TiendaBrunoBBDD {
         }
     }
 
-    public void consultarPedidos(Integer idCliente) {
+    public void realizarPedido(Vinilos vinilos, User cliente) {
+        Connection con = null;
         try {
             con = DriverManager.getConnection(url, username, password);
-            String sql = "SELECT " +
-                    "users.nombre AS nombre_usuario, " +
-                    "users.apellido, " +
-                    "pedidos.id_pedido, " +
-                    "pedidos.fecha_pedido, " +
-                    "vinilos.id_vinilo, " +
-                    "vinilos.nombre AS nombre_vinilo, " +
-                    "vinilos.artista, " +
-                    "detalles_pedido.cantidad, " +
-                    "detalles_pedido.precio_unitario " +
-                    "FROM " +
-                    "pedidos " +
-                    "JOIN users ON pedidos.id_user = users.id_user " +
-                    "JOIN detalles_pedido ON pedidos.id_pedido = detalles_pedido.id_pedido " +
-                    "JOIN vinilos ON detalles_pedido.id_vinilo = vinilos.id_vinilo " +
-                    "WHERE " +
-                    "pedidos.id_user = " + idCliente + ";";
-            Statement sentencia = con.createStatement();
-            ResultSet rs = sentencia.executeQuery(sql);
+    
+            // Primero actualizar el stock de los vinilos seleccionados y realizar el seguimiento de la cantidad
+            Map<Integer, Integer> cantidadPorVinilo = new HashMap<>();
 
-            while (rs.next()) {
-                String nombreUsuario = rs.getString("nombre_usuario");
-                String apellido = rs.getString("apellido");
-                int idPedido = rs.getInt("id_pedido");
-                String fechaPedido = rs.getString("fecha_pedido");
-                int idVinilo = rs.getInt("id_vinilo");
-                String nombreVinilo = rs.getString("nombre_vinilo");
-                String artista = rs.getString("artista");
-                int cantidad = rs.getInt("cantidad");
-                double precioUnitario = rs.getDouble("precio_unitario");
+    
+            for (Vinilo vinilo : vinilos.getVinilos()) {
+                if (vinilo != null && vinilo.getStock() > 0) {
 
-                System.out.println("Usuario: " + nombreUsuario + " " + apellido);
-                System.out.println("Pedido ID: " + idPedido);
-                System.out.println("Fecha de Pedido: " + fechaPedido);
-                System.out.println("Detalle del Vinilo:");
-                System.out.println("   - ID del Vinilo: " + idVinilo);
-                System.out.println("   - Nombre del Vinilo: " + nombreVinilo);
-                System.out.println("   - Artista: " + artista);
-                System.out.println("   - Cantidad: " + cantidad);
-                System.out.println("   - Precio Unitario: " + precioUnitario);
-                System.out.println("---------------------------------------");
+                    // Realizar el seguimiento de la cantidad por vinilo
+                    int cantidadActual = cantidadPorVinilo.getOrDefault(vinilo.getIdVinilo(), 0);
+    
+                    // Verificar si ya existe un registro para este vinilo
+                    if (cantidadActual == 0) {
+                        cantidadPorVinilo.put(vinilo.getIdVinilo(), 1);
+                    } else {
+                        cantidadPorVinilo.put(vinilo.getIdVinilo(), cantidadActual + 1);
+                    }
+
+                    int nuevoStock = vinilo.getStock() - cantidadPorVinilo.getOrDefault(vinilo.getIdVinilo(), 1);
+
+                    String sqlUpdate = "UPDATE vinilos SET stock = " + nuevoStock + " WHERE id_vinilo = " + vinilo.getIdVinilo() + ";";
+                    try (Statement sentencia = con.createStatement()) {
+                        sentencia.executeUpdate(sqlUpdate);
+                        System.out.println("Stock del vinilo " + vinilo.getIdVinilo() + " Actualizado a " + nuevoStock);
+    
+                    }
+                } else {
+                    System.out.println("Vinilo agotado");
+                }
             }
-
-            rs.close();
-            sentencia.close();
-            con.close();
-
+    
+            // Después añadir un nuevo pedido
+            LocalDate fechaActual = LocalDate.now();
+            String sqlInsertPedido = "INSERT INTO pedidos (id_user, fecha_pedido, estado) VALUES (" + cliente.getIdUser() + ", '"
+                    + fechaActual.toString() + "', 'En proceso');";
+            try (Statement statement = con.createStatement()) {
+                int affectedRows = statement.executeUpdate(sqlInsertPedido, Statement.RETURN_GENERATED_KEYS);
+    
+                if (affectedRows > 0) {
+                    // Obtener las claves generadas (en este caso, el ID del pedido)
+                    try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                        if (generatedKeys.next()) {
+                            int idPedido = generatedKeys.getInt(1);
+                            System.out.println("ID del pedido recién insertado: " + idPedido);
+    
+                            // Insertar registros en la tabla detalles_pedido
+                            for (Map.Entry<Integer, Integer> entry : cantidadPorVinilo.entrySet()) {
+                                int idVinilo = entry.getKey();
+                                int cantidad = entry.getValue();
+                                // Obtener el precio unitario del vinilo (aquí debes reemplazar "obtenerPrecioVinilo()" por el método real)
+                                double precioUnitario = consultarVinilo(idVinilo).getPrecio();
+    
+                                String sqlInsertDetalle = "INSERT INTO detalles_pedido (id_pedido, id_vinilo, cantidad, precio_unitario) VALUES ("
+                                        + idPedido + ", " + idVinilo + ", " + cantidad + ", " + precioUnitario + ");";
+                                try (Statement detalleStatement = con.createStatement()) {
+                                    detalleStatement.executeUpdate(sqlInsertDetalle);
+                                    System.out.println("Detalle de pedido insertado para el vinilo " + idVinilo);
+                                }
+                            }
+                        } else {
+                            System.out.println("No se pudieron obtener las claves generadas.");
+                        }
+                    }
+                } else {
+                    System.out.println("No se insertó ningún pedido");
+                }
+            }
+    
+            System.out.println("\nPedido añadido correctamente.");
+    
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-
-    }
-
+    }    
+    
     private Vinilos listarVinilos() {
 
         List<Vinilo> vinilos = new ArrayList<>();
@@ -152,7 +185,7 @@ public class TiendaBrunoBBDD {
         return result;
     }
 
-    private List<User> listarUsuarios() {
+    public List<User> listarUsuarios() {
 
         List<User> usuarios = new ArrayList<>();
 
@@ -299,7 +332,7 @@ public class TiendaBrunoBBDD {
                 /* Ejecutamos el Insert */
                 sentencia.executeUpdate(sbCadena.toString());
             }
-            System.out.println("Se han insertado "+vinilosInsert.size()+" vinilos en la base de datos\n");
+            System.out.println("Se han insertado " + vinilosInsert.size() + " vinilos en la base de datos\n");
 
         } catch (SQLException sqlex) {
             sqlex.printStackTrace();
