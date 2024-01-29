@@ -99,8 +99,8 @@ public class User {
 
     @Override
     public String toString() {
-        return "User [idUser=" + idUser + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
-                + ", direccion=" + direccion + ", telefono=" + telefono + ", contrasena=" + contrasena + "]";
+        return "\n----------\nid=" + idUser + "\nNombre=" + nombre + "\nApellido=" + apellido + "\nEmail=" + email
+                + "\nDireccion=" + direccion + "\nTelefono=" + telefono + "\nContrasena=" + contrasena + "\n----------\n";
     }
 
 }

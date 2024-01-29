@@ -20,9 +20,8 @@ public class Main {
             switch (opcion) {
                 case 1:
                     sc.nextLine();
-                    System.out.println("Introduzca el nombre de la tabla:");
+                    System.out.println("\nIntroduzca el nombre de la tabla (vinilos, pedidos, users, detalles_pedido):");
                     String tabla = sc.nextLine();
-                    System.out.println(tabla);
                     bbdd.consultarTabla(tabla);
                     break;
                 case 2:
@@ -67,6 +66,7 @@ public class Main {
     }
 
     private static void mostrarMenu() {
+        System.out.println();
         System.out.println("Menú:");
         System.out.println("1. Consultar tabla");
         System.out.println("2. Historial de pedidos por cliente");
@@ -74,6 +74,7 @@ public class Main {
         System.out.println("4. Insertar vinilos desde XML");
         System.out.println("5. Backup de vinilos a XML");
         System.out.println("6. Salir");
+        System.out.println();
         System.out.print("Seleccione una opción: ");
     }
 }

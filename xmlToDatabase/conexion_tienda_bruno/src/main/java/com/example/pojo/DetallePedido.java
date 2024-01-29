@@ -75,8 +75,8 @@ public class DetallePedido {
 
     @Override
     public String toString() {
-        return "DetallePedido [idDetalle=" + idDetalle + ", idPedido=" + idPedido
-                + ", idVinilo=" + idVinilo + ", cantidad=" + cantidad + ", precioUnitario=" + precioUnitario + "]";
+        return "\n----------\nidDetalle=" + idDetalle + "\nidPedido=" + idPedido
+                + "\nidVinilo=" + idVinilo + "\ncantidad=" + cantidad + "\nprecioUnitario=" + precioUnitario + "\n----------\n";
     }
 
 }

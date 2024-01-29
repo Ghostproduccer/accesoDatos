@@ -298,8 +298,8 @@ public class TiendaBrunoBBDD {
 
                 /* Ejecutamos el Insert */
                 sentencia.executeUpdate(sbCadena.toString());
-                System.out.println("Se han insertado los vinilos en la base de datos\n");
             }
+            System.out.println("Se han insertado "+vinilosInsert.size()+" vinilos en la base de datos\n");
 
         } catch (SQLException sqlex) {
             sqlex.printStackTrace();

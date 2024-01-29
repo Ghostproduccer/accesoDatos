@@ -63,8 +63,8 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido [idPedido=" + idPedido + ", idUser=" + idUser + ", fechaPedido=" + fechaPedido
-                + ", estado=" + estado + "]";
+        return "\n----------\nidPedido=" + idPedido + "\nidUser=" + idUser + "\nfechaPedido=" + fechaPedido
+                + "\nEstado=" + estado + "\n----------\n";
     }
 
 }
