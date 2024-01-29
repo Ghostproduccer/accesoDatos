@@ -22,21 +22,22 @@ public class Main {
             switch (opcion) {
                 case 1:
                     sc.nextLine();
-                    System.out.println("\nIntroduzca el nombre de la tabla (vinilos, pedidos, users, detalles_pedido):");
+                    System.out
+                            .println("\nIntroduzca el nombre de la tabla (vinilos, pedidos, users, detalles_pedido):");
                     String tabla = sc.nextLine();
                     bbdd.consultarTabla(tabla);
                     break;
                 case 2:
-                    //implement realizar pedido
-                    //para pruebas
-                    List<Vinilo> lista= new ArrayList<>();
+                    // implement realizar pedido
+                    // para pruebas
+                    List<Vinilo> lista = new ArrayList<>();
                     Vinilo vinilo1 = bbdd.consultarVinilo(1);
-                    Vinilo vinilo2 = bbdd.consultarVinilo(2);
+                    Vinilo vinilo2 = bbdd.consultarVinilo(1);
                     lista.add(vinilo1);
                     lista.add(vinilo2);
                     Vinilos vinilos = new Vinilos(lista);
-                    
-                    User cliente = bbdd.listarUsuarios().get(3);
+
+                    User cliente = bbdd.listarUsuarios().get(2);
 
                     bbdd.realizarPedido(vinilos, cliente);
                     break;
@@ -66,7 +67,7 @@ public class Main {
                         bbdd.volcarVinilosXML();
                     }
                     break;
-                    
+
                 case 6:
                     System.out.println("Saliendo del programa. ¡Hasta luego!");
                     break;
@@ -80,7 +81,7 @@ public class Main {
         System.out.println();
         System.out.println("Menú:");
         System.out.println("1. Consultar tabla");
-        System.out.println("2. Historial de pedidos por cliente");
+        System.out.println("2. Realizar pedido");
         System.out.println("3. Modificar precio vinilo");
         System.out.println("4. Insertar vinilos desde XML");
         System.out.println("5. Backup de vinilos a XML");
