@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.example.pojo.*;
@@ -25,9 +27,18 @@ public class Main {
                     bbdd.consultarTabla(tabla);
                     break;
                 case 2:
-                    System.out.println("Introduzca el id del cliente");
-                    Integer idCliente = sc.nextInt();
-                    bbdd.consultarPedidos(idCliente);
+                    //implement realizar pedido
+                    //para pruebas
+                    List<Vinilo> lista= new ArrayList<>();
+                    Vinilo vinilo1 = bbdd.consultarVinilo(1);
+                    Vinilo vinilo2 = bbdd.consultarVinilo(2);
+                    lista.add(vinilo1);
+                    lista.add(vinilo2);
+                    Vinilos vinilos = new Vinilos(lista);
+                    
+                    User cliente = bbdd.listarUsuarios().get(3);
+
+                    bbdd.realizarPedido(vinilos, cliente);
                     break;
                 case 3:
                     System.out.println("Introduzca el id del vinilo");
