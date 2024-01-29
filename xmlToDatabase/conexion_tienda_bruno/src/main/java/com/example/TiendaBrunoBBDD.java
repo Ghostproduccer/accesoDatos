@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.xml.bind.annotation.XmlElement;
 
@@ -69,7 +70,7 @@ public class TiendaBrunoBBDD {
                     "JOIN detalles_pedido ON pedidos.id_pedido = detalles_pedido.id_pedido " +
                     "JOIN vinilos ON detalles_pedido.id_vinilo = vinilos.id_vinilo " +
                     "WHERE " +
-                    "pedidos.id_user = "+idCliente+";";
+                    "pedidos.id_user = " + idCliente + ";";
             Statement sentencia = con.createStatement();
             ResultSet rs = sentencia.executeQuery(sql);
 
@@ -273,33 +274,33 @@ public class TiendaBrunoBBDD {
 
     public void insertarVinilosdesdeXML(String vinilosPath) {
 
-        List <Vinilo> vinilosInsert = xmLtoList.getVinilosfromXML(vinilosPath);
+        List<Vinilo> vinilosInsert = xmLtoList.getVinilosfromXML(vinilosPath);
 
         try {
             con = DriverManager.getConnection(url, username, password);
             Statement sentencia = con.createStatement();
-            
+
             for (Vinilo vinilo : vinilosInsert) {
-            /* datos a insertar */
-            String nombre = vinilo.getNombre();
-            String artista = vinilo.getArtista();
-            String genero = vinilo.getGenero();
-            Integer anoLanzamiento = vinilo.getAnoLanzamiento();
-            Double precio = vinilo.getPrecio();
-            Integer stock = vinilo.getStock();
+                /* datos a insertar */
+                String nombre = vinilo.getNombre();
+                String artista = vinilo.getArtista();
+                String genero = vinilo.getGenero();
+                Integer anoLanzamiento = vinilo.getAnoLanzamiento();
+                Double precio = vinilo.getPrecio();
+                Integer stock = vinilo.getStock();
 
+                /* sentencia a insertar **cuidado con las comillas */
+                StringBuffer sbCadena = new StringBuffer();
+                sbCadena.append("insert into vinilos (nombre, artista, genero, ano_lanzamiento, precio, stock) ");
+                sbCadena.append(" VALUES ('" + nombre + "', '" + artista + "', '" + genero + "' , " + anoLanzamiento
+                        + ", " + precio + ", " + stock + ")");
+                System.out.println("Sentencia a ejecutar: " + sbCadena);
 
-            /* sentencia a insertar **cuidado con las comillas */
-            StringBuffer sbCadena = new StringBuffer();
-            sbCadena.append("insert into vinilos (nombre, artista, genero, ano_lanzamiento, precio, stock) ");
-            sbCadena.append(" VALUES ('" + nombre + "', '" + artista + "', '" + genero + "' , " + anoLanzamiento +", " + precio + ", " + stock +")");
-            System.out.println("Sentencia a ejecutar: " + sbCadena);
-
-            /* Ejecutamos el Insert */
-            sentencia.executeUpdate(sbCadena.toString());
-            System.out.println("Se han insertado los vinilos en la base de datos\n");
+                /* Ejecutamos el Insert */
+                sentencia.executeUpdate(sbCadena.toString());
+                System.out.println("Se han insertado los vinilos en la base de datos\n");
             }
-            
+
         } catch (SQLException sqlex) {
             sqlex.printStackTrace();
         } finally {
@@ -316,9 +317,67 @@ public class TiendaBrunoBBDD {
     public void volcarVinilosXML() {
         Vinilos vinilos = listarVinilos();
         LocalDate fechaActual = LocalDate.now();
-        String xmlPath = xmLtoList.getXmlPath()+"backup_vinilos_"+fechaActual.toString()+".xml";
+        String xmlPath = xmLtoList.getXmlPath() + "backup_vinilos_" + fechaActual.toString() + ".xml";
 
         xmLtoList.setVinilosToXML(xmlPath, vinilos);
     }
 
+    public Vinilo consultarVinilo(Integer idVinilo) {
+        Vinilo vinilo = null;
+        try {
+            con = DriverManager.getConnection(url, username, password);
+            String sql = "SELECT * from vinilos WHERE id_vinilo = " + idVinilo + ";";
+            Statement sentencia = con.createStatement();
+            ResultSet rs = sentencia.executeQuery(sql);
+
+            String nombre;
+            String artista;
+            String genero;
+            Integer anoLanzamiento;
+            Double precio;
+            Integer stock;
+
+            while (rs.next()) {
+                nombre = rs.getString("nombre");
+                artista = rs.getString("artista");
+                genero = rs.getString("genero");
+                anoLanzamiento = rs.getInt("ano_lanzamiento");
+                precio = rs.getDouble("precio");
+                stock = rs.getInt("stock");
+
+                vinilo = new Vinilo(idVinilo, nombre, artista, genero, anoLanzamiento, precio, stock);
+            }
+
+            rs.close();
+            sentencia.close();
+            con.close();
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return vinilo;
+    }
+
+    public void modificarPrecioVinilo(Vinilo vinilo, Scanner sc) {
+        System.out.println("El precio actual es " + vinilo.getPrecio() + " , introduzca el nuevo importe:");
+        String nuevoPrecio = sc.nextLine();
+        try {
+            con = DriverManager.getConnection(url, username, password);
+            StringBuffer sql = new StringBuffer();
+            sql.append(
+                    "UPDATE vinilos SET precio = " + nuevoPrecio + " WHERE id_vinilo = '" + vinilo.getIdVinilo() + "'");
+            System.out.println("Sentencia a ejecutar: " + sql);
+
+            Statement sentencia = con.createStatement();
+            sentencia.executeUpdate(sql.toString());
+            System.out.println("Precio Actualizado");
+
+            sentencia.close();
+            con.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 }

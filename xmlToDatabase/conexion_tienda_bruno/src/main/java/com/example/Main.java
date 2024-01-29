@@ -2,6 +2,8 @@ package com.example;
 
 import java.util.Scanner;
 
+import com.example.pojo.*;
+
 public class Main {
 
     private static TiendaBrunoBBDD bbdd = new TiendaBrunoBBDD();
@@ -25,11 +27,20 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Introduzca el id del cliente");
-                    Integer id = sc.nextInt();
-                    bbdd.consultarPedidos(id);
+                    Integer idCliente = sc.nextInt();
+                    bbdd.consultarPedidos(idCliente);
                     break;
                 case 3:
-                    System.out.println();
+                    System.out.println("Introduzca el id del vinilo");
+                    Integer idVinilo = sc.nextInt();
+                    Vinilo vinilo = bbdd.consultarVinilo(idVinilo);
+                    System.out.println(vinilo);
+                    sc.nextLine();
+                    System.out.println("¿Desea modificar el precio del vinilo? s/n");
+                    String answer = sc.nextLine();
+                    if (answer.equals("s")) {
+                        bbdd.modificarPrecioVinilo(vinilo, sc);
+                    }
                     break;
                 case 4:
                     sc.nextLine();
@@ -57,7 +68,7 @@ public class Main {
 
     private static void mostrarMenu() {
         System.out.println("Menú:");
-        System.out.println("1. Listar tabla");
+        System.out.println("1. Consultar tabla");
         System.out.println("2. Historial de pedidos por cliente");
         System.out.println("3. Modificar precio vinilo");
         System.out.println("4. Insertar vinilos desde XML");
