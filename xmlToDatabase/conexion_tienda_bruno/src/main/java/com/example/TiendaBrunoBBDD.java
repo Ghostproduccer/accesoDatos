@@ -126,7 +126,7 @@ public class TiendaBrunoBBDD {
                 }
             }
     
-            System.out.println("Pedido añadido correctamente.");
+            System.out.println("\nPedido añadido correctamente.");
     
         } catch (SQLException e) {
             e.printStackTrace();

@@ -28,16 +28,40 @@ public class Main {
                     bbdd.consultarTabla(tabla);
                     break;
                 case 2:
-                    // implement realizar pedido
-                    // para pruebas
-                    List<Vinilo> lista = new ArrayList<>();
-                    Vinilo vinilo1 = bbdd.consultarVinilo(1);
-                    Vinilo vinilo2 = bbdd.consultarVinilo(1);
-                    lista.add(vinilo1);
-                    lista.add(vinilo2);
-                    Vinilos vinilos = new Vinilos(lista);
+                    User cliente = bbdd.listarUsuarios().get(0);
 
-                    User cliente = bbdd.listarUsuarios().get(2);
+                    List<Vinilo> listaVinilos = new ArrayList<>();
+
+                    bbdd.consultarTabla("vinilos");
+
+                    while (true) {
+                        sc.nextLine();
+                        System.out.println(
+                                "\nIngrese el ID del vinilo para añadirlo al pedido (o 'fin' para finalizar):");
+                        String input = sc.nextLine();
+
+                        if (input.equalsIgnoreCase("fin")) {
+                            break;
+                        }
+
+                        try {
+                            int idVinilo = Integer.parseInt(input);
+                            Vinilo vinilo = bbdd.consultarVinilo(idVinilo);
+
+                            if (vinilo != null) {
+                                listaVinilos.add(vinilo);
+                                System.out.println("Vinilo añadido a la lista.\n");
+                            } else {
+                                System.out.println("No se encontró un vinilo con el ID proporcionado.");
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Por favor, ingrese un ID válido.");
+                        }
+                    }
+
+                    Vinilos vinilos = new Vinilos(listaVinilos);
+                    System.out
+                            .println("Lista final de vinilos seleccionados para el pedido: \n" + vinilos.getVinilos());
 
                     bbdd.realizarPedido(vinilos, cliente);
                     break;
