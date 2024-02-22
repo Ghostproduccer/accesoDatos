@@ -4,40 +4,39 @@ import com.example.actividad7.dao.AlumnoDAO;
 import com.example.actividad7.dao.AlumnoDAOImplementation;
 import com.example.actividad7.model.Alumno;
 
+import java.util.List;
+
 public class AlumnoTest {
     public static void main(String[] args) {
         // Creamos instancia de DAO
-        AlumnoDAO alumnoDAO = new AlumnoDAOImplementation();
+        AlumnoDAOImplementation alumnoDAO = new AlumnoDAOImplementation();
 
-        // Creamos un nuevo alumno
-        Alumno nuevoAlumno = new Alumno(1, "Juan", "2002-01-01", 7.6f, "DAM1");
+        // Método 1: Obtener todos los alumnos de la base de datos
+        System.out.println("Método 1: Obtener todos los alumnos de la base de datos");
+        List<Alumno> todosAlumnos = alumnoDAO.obtenerTodosAlumnos();
+        for (Alumno alumno : todosAlumnos) {
+            System.out.println(alumno);
+        }
 
-        // Insertamos el nuevo alumno
-        alumnoDAO.insertarAlumno(nuevoAlumno);
+        // Método 2: Obtener los alumnos de una clase específica
+        System.out.println("\nMétodo 2: Obtener los alumnos de una clase específica");
+        List<Alumno> alumnosClase = alumnoDAO.obtenerAlumnosPorClase("DAM1");
+        for (Alumno alumno : alumnosClase) {
+            System.out.println(alumno);
+        }
 
-        // Obtenemos el alumno recién insertado
-        Alumno alumnoObtenido = alumnoDAO.obtenerAlumno(5);
-        System.out.println("Alumno obtenido (recién insertado): " + alumnoObtenido.getNombre());
+        // Método 3: Obtener la nota media de una clase
+        System.out.println("\nMétodo 3: Obtener la nota media de una clase");
+        float notaMediaClase = alumnoDAO.obtenerNotaMediaClase("DAM1");
+        System.out.println("Nota media de la clase CONTA1: " + notaMediaClase);
 
-        // Actualizamos el nombre del alumno
-        alumnoObtenido.setNombre("Pedro");
-        alumnoDAO.actualizarAlumno(alumnoObtenido);
-
-        // Obtenemos el alumno actualizado
-        Alumno alumnoActualizado = alumnoDAO.obtenerAlumno(5);
-        System.out.println("Nombre actualizado: " + alumnoActualizado.getNombre());
-
-        // Eliminamos al alumno
-        alumnoDAO.eliminarAlumno(9);
-        System.out.println("Alumno eliminado");
-
-        // Intentamos obtener al alumno eliminado (debería devolver null)
-        Alumno alumnoEliminado = alumnoDAO.obtenerAlumno(9);
-        if (alumnoEliminado == null) {
-            System.out.println("Alumno eliminado correctamente.");
-        } else {
-            System.out.println("Error al eliminar el alumno.");
+        // Método 4: Obtener los alumnos suspensos de una clase
+        System.out.println("\nMétodo 4: Obtener los alumnos suspensos de una clase");
+        List<Alumno> alumnosSuspensos = alumnoDAO.obtenerAlumnosSuspensosClase("DAM1");
+        for (Alumno alumno : alumnosSuspensos) {
+            System.out.println(alumno);
         }
     }
 }
+
 

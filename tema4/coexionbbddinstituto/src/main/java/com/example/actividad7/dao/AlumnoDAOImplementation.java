@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AlumnoDAOImplementation implements AlumnoDAO {
 
@@ -69,5 +71,60 @@ public class AlumnoDAOImplementation implements AlumnoDAO {
             e.printStackTrace();
         }
         return alumno;
+    }
+
+    public List<Alumno> obtenerTodosAlumnos() {
+        List<Alumno> alumnos = new ArrayList<>();
+        try (Connection connection = DatabaseConnection.getConnection()) {
+            String sql = "SELECT * FROM Alumnos";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Alumno alumno = new Alumno(resultSet.getInt("num"), resultSet.getString("nombre"),
+                        resultSet.getString("fnac"), resultSet.getFloat("media"), resultSet.getString("curso"));
+                alumnos.add(alumno);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return alumnos;
+    }
+
+    public List<Alumno> obtenerAlumnosPorClase(String clase) {
+        List<Alumno> alumnos = new ArrayList<>();
+        try (Connection connection = DatabaseConnection.getConnection()) {
+            String sql = "SELECT * FROM Alumnos WHERE curso = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, clase);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Alumno alumno = new Alumno(resultSet.getInt("num"), resultSet.getString("nombre"),
+                        resultSet.getString("fnac"), resultSet.getFloat("media"), resultSet.getString("curso"));
+                alumnos.add(alumno);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return alumnos;
+    }
+
+    public float obtenerNotaMediaClase(String clase) {
+        List<Alumno> alumnos = obtenerAlumnosPorClase(clase);
+        float totalMedia = 0;
+        for (Alumno alumno : alumnos) {
+            totalMedia += alumno.getMedia();
+        }
+        return totalMedia / alumnos.size();
+    }
+
+    public List<Alumno> obtenerAlumnosSuspensosClase(String clase) {
+        List<Alumno> alumnosSuspensos = new ArrayList<>();
+        List<Alumno> alumnos = obtenerAlumnosPorClase(clase);
+        for (Alumno alumno : alumnos) {
+            if (alumno.getMedia() < 5.0f) {
+                alumnosSuspensos.add(alumno);
+            }
+        }
+        return alumnosSuspensos;
     }
 }
